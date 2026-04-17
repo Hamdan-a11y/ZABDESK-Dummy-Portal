@@ -50,12 +50,12 @@
 
         <section class="course-hub-content outline-center-panel">
             <div class="outline-wrapper">
-                <section class="outline-card">
-                    <header class="outline-title">Recap Sheet - Enter Marks</header>
+                <section class="outline-card recap-container">
+                    <header class="outline-title recap-title">Student Recap Sheet</header>
 
-                    <div class="summary-table primary-summary">
+                    <div class="summary-table primary-summary recap-header-summary">
                         <div class="summary-row">
-                            <div class="summary-label">Instructor</div>
+                            <div class="summary-label">Name</div>
                             <div class="summary-value" id="recapInstructor">Dr. Ahmed Hassan</div>
                         </div>
                         <div class="summary-row">
@@ -64,108 +64,50 @@
                         </div>
                     </div>
 
-                    <div class="summary-table secondary-summary">
-                        <div class="summary-row">
-                            <div class="summary-label">Class:</div>
-                            <div class="summary-value" id="recapClassName">BCS/BS-1 (D)</div>
-                        </div>
-                        <div class="summary-row">
-                            <div class="summary-label">Course:</div>
-                            <div class="summary-value" id="recapCourseTitle">CS101 Fundamentals of Programming</div>
+                    <div class="recap-info-section">
+                        <div class="recap-info-table">
+                            <div class="recap-row">
+                                <span class="recap-row-label">Class</span>
+                                <span class="recap-row-value" id="recapClassName">BCS/BS-2 A</span>
+                            </div>
+                            <div class="recap-row">
+                                <span class="recap-row-label">Course</span>
+                                <span class="recap-row-value" id="recapCourseTitle">CS101 Fundamentals of Programming</span>
+                            </div>
                         </div>
                     </div>
 
-                    <section class="outline-section">
-                        <header>Assessment Methods</header>
-                        <div class="assessment-grid">
-                            <div class="assessment-item">
-                                <h4>Quizzes</h4>
-                                <p>Value: 10%</p>
-                                <input type="number" placeholder="Enter quiz marks" min="0" max="100">
-                            </div>
-                            <div class="assessment-item">
-                                <h4>Assignments</h4>
-                                <p>Value: 15%</p>
-                                <input type="number" placeholder="Enter assignment marks" min="0" max="100">
-                            </div>
-                            <div class="assessment-item">
-                                <h4>Midterm Exam</h4>
-                                <p>Value: 25%</p>
-                                <input type="number" placeholder="Enter midterm marks" min="0" max="100">
-                            </div>
-                            <div class="assessment-item">
-                                <h4>Final Exam</h4>
-                                <p>Value: 50%</p>
-                                <input type="number" placeholder="Enter final exam marks" min="0" max="100">
-                            </div>
-                        </div>
-                    </section>
+                    <div class="recap-selector-section">
+                        <label for="marksTypeSelect">Select the Marks Distribution Type for Entry(Final to be submitted at the last)</label>
+                        <select id="marksTypeSelect" class="marks-type-dropdown" onchange="updateMarksType()">
+                            <option value="quiz1">Quiz 1 (4.5 marks)</option>
+                            <option value="quiz2">Quiz 2 (4.5 marks)</option>
+                            <option value="quiz3">Quiz 3 (4.5 marks)</option>
+                            <option value="quiz4">Quiz 4 (4.5 marks)</option>
+                            <option value="assignment1">Assignment 1 (3 marks)</option>
+                            <option value="assignment2">Assignment 2 (3 marks)</option>
+                            <option value="assignment3">Assignment 3 (3 marks)</option>
+                            <option value="assignment4">Assignment 4 (3 marks)</option>
+                            <option value="midterm">Mid Term (30 marks)</option>
+                            <option value="finalterm" selected>Final Term (40 marks)</option>
+                        </select>
+                    </div>
 
-                    <section class="outline-section">
-                        <header>Student Marks Entry</header>
-                        <div class="marks-table-wrapper">
-                            <table class="marks-table">
-                                <thead>
-                                    <tr>
-                                        <th>Roll No</th>
-                                        <th>Student Name</th>
-                                        <th>Quiz</th>
-                                        <th>Assignment</th>
-                                        <th>Midterm</th>
-                                        <th>Final</th>
-                                        <th>Total</th>
-                                        <th>Grade</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>001</td>
-                                        <td>Muhammad Ali</td>
-                                        <td><input type="number" min="0" max="100" value="85"></td>
-                                        <td><input type="number" min="0" max="100" value="90"></td>
-                                        <td><input type="number" min="0" max="100" value="78"></td>
-                                        <td><input type="number" min="0" max="100" value="82"></td>
-                                        <td>82</td>
-                                        <td>B</td>
-                                    </tr>
-                                    <tr>
-                                        <td>002</td>
-                                        <td>Fatima Khan</td>
-                                        <td><input type="number" min="0" max="100" value="92"></td>
-                                        <td><input type="number" min="0" max="100" value="88"></td>
-                                        <td><input type="number" min="0" max="100" value="95"></td>
-                                        <td><input type="number" min="0" max="100" value="90"></td>
-                                        <td>91</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>003</td>
-                                        <td>Hassan Ahmed</td>
-                                        <td><input type="number" min="0" max="100" value="75"></td>
-                                        <td><input type="number" min="0" max="100" value="80"></td>
-                                        <td><input type="number" min="0" max="100" value="72"></td>
-                                        <td><input type="number" min="0" max="100" value="68"></td>
-                                        <td>72</td>
-                                        <td>C+</td>
-                                    </tr>
-                                    <tr>
-                                        <td>004</td>
-                                        <td>Ayesha Malik</td>
-                                        <td><input type="number" min="0" max="100" value="88"></td>
-                                        <td><input type="number" min="0" max="100" value="85"></td>
-                                        <td><input type="number" min="0" max="100" value="89"></td>
-                                        <td><input type="number" min="0" max="100" value="86"></td>
-                                        <td>86</td>
-                                        <td>B+</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
+                    <div class="recap-action-buttons">
+                        <button type="button" class="btn-enter-marks" onclick="openEnterMarks()">Enter Marks</button>
+                        <button type="button" class="btn-view-recap" onclick="viewRecapSheet()">View Recap Sheet</button>
+                    </div>
 
-                    <div class="action-buttons">
-                        <button type="button" class="btn-primary" onclick="saveMarks()">Save Marks</button>
-                        <button type="button" class="btn-secondary" onclick="resetForm()">Reset</button>
+                    <div class="recap-warning-section">
+                        <p class="warning-title">WARNING:</p>
+                        <ul class="warning-list">
+                            <li>Recapsheet will be locked after all marks heads are posted</li>
+                            <li>You will not be allowed to submit any online marks change request after recapsheet is locked</li>
+                        </ul>
+                    </div>
+
+                    <div class="recap-footer">
+                        <p>Designed and developed by ZabSolutions</p>
                     </div>
                 </section>
             </div>
@@ -205,6 +147,34 @@
             }
         }
 
+        // Sample student names for generating random data
+        const studentFirstNames = [
+            'Muhammad', 'Abdullah', 'Ahmad', 'Ahmed', 'Ali', 'Hassan', 'Omar', 'Amir', 'Karim', 'Jamal',
+            'Fatima', 'Aisha', 'Zainab', 'Noor', 'Layla', 'Hana', 'Sara', 'Maryam', 'Dina', 'Leila'
+        ];
+
+        const studentLastNames = [
+            'Khan', 'Ahmed', 'Hassan', 'Ali', 'Malik', 'Hussain', 'Ibrahim', 'Asad', 'Raza', 'Imran',
+            'Rahim', 'Noor', 'Saleem', 'Kareem', 'Shakir', 'Nasir', 'Anwar', 'Rashid', 'Fahad', 'Mehdi'
+        ];
+
+        const marksDistribution = {
+            quiz1: { name: 'Quiz 1', totalMarks: 4.5 },
+            quiz2: { name: 'Quiz 2', totalMarks: 4.5 },
+            quiz3: { name: 'Quiz 3', totalMarks: 4.5 },
+            quiz4: { name: 'Quiz 4', totalMarks: 4.5 },
+            assignment1: { name: 'Assignment 1', totalMarks: 3 },
+            assignment2: { name: 'Assignment 2', totalMarks: 3 },
+            assignment3: { name: 'Assignment 3', totalMarks: 3 },
+            assignment4: { name: 'Assignment 4', totalMarks: 3 },
+            midterm: { name: 'Mid Term', totalMarks: 30 },
+            finalterm: { name: 'Final Term', totalMarks: 40 }
+        };
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
         function populateRecapSheetData() {
             const courseId = getQueryParam('courseId') || 1;
             const course = mockCourses.find(c => c.id == courseId);
@@ -218,14 +188,21 @@
             }
         }
 
-        function saveMarks() {
-            alert('Marks saved successfully! An automatic email notification will be sent to students.');
+        function updateMarksType() {
+            const selectedValue = document.getElementById('marksTypeSelect').value;
+            const marksInfo = marksDistribution[selectedValue];
+            // This function can be used to update UI based on selected marks type
+            console.log(`Selected: ${marksInfo.name} (${marksInfo.totalMarks} marks)`);
         }
 
-        function resetForm() {
-            if (confirm('Are you sure you want to reset all marks?')) {
-                location.reload();
-            }
+        function openEnterMarks() {
+            const selectedValue = document.getElementById('marksTypeSelect').value;
+            const marksInfo = marksDistribution[selectedValue];
+            alert(`Opening Enter Marks for: ${marksInfo.name} (${marksInfo.totalMarks} marks)\n\nThis will load a form to enter marks for all students.`);
+        }
+
+        function viewRecapSheet() {
+            alert('Loading Recap Sheet view...\n\nThis will display all entered marks categorized by assessment type.');
         }
     </script>
 </body>
