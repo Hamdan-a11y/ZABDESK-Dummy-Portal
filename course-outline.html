@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Outline - Fundamentals of Programming</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/course-outline.css">
+</head>
+<body class="outline-shell-body">
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <div class="logo-circle">Z</div>
+                <span class="brand-text">ZABDESK</span>
+            </div>
+            <div class="navbar-menu">
+                <span class="user-info">Faculty Member</span>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="course-hub-layout outline-shell-layout">
+        <aside class="hub-left-panel">
+            <div class="hub-menu-card">
+                <p class="menu-eyebrow">Teaching Tools</p>
+                <h3>Navigate Course</h3>
+                <p class="menu-subtext">Open a workspace for this section.</p>
+                <button type="button" class="hub-menu-btn active" id="outlineNavBtn">
+                    <span class="menu-title">Course Outline</span>
+                    <small>Review / publish outline</small>
+                </button>
+                <button type="button" class="hub-menu-btn" id="progressNavBtn">
+                    <span class="menu-title">Post Class Progress</span>
+                    <small>Record lesson coverage</small>
+                </button>
+            </div>
+
+            <div class="hub-guide-card">
+                <h4>Reminder</h4>
+                <p>Submit final outlines at least one week before the semester start. Administrative staff will be notified automatically.</p>
+            </div>
+        </aside>
+
+        <section class="course-hub-content outline-center-panel">
+            <div class="outline-wrapper">
+                <section class="outline-card">
+            <header class="outline-title">Course Outline</header>
+
+            <div class="summary-table primary-summary">
+                <div class="summary-row">
+                    <div class="summary-label">Name</div>
+                    <div class="summary-value" id="outlineFacultyName">Ms Aniqa .</div>
+                </div>
+                <div class="summary-row">
+                    <div class="summary-label">Semester</div>
+                    <div class="summary-value" id="outlineSemester">Fall-2025</div>
+                </div>
+            </div>
+
+            <div class="summary-table secondary-summary">
+                <div class="summary-row">
+                    <div class="summary-label">Class:</div>
+                    <div class="summary-value" id="outlineClassName">BCS/BS-1 (D)</div>
+                </div>
+                <div class="summary-row">
+                    <div class="summary-label">Course:</div>
+                    <div class="summary-value" id="outlineCourseTitle">CSC 1103 Fundamentals of Programming</div>
+                </div>
+                <div class="summary-row">
+                    <div class="summary-label">Instructor:</div>
+                    <div class="summary-value" id="outlineInstructor">Ms Aniqa .</div>
+                </div>
+            </div>
+
+            <section class="outline-section">
+                <header>Class details</header>
+                <div class="info-grid two-cols">
+                    <div class="info-label">Class Timing and Room</div>
+                    <div class="info-value" id="outlineClassTiming">2:00 - 3:30 , 8:00 - 9:30 ORIC Hall</div>
+                    <div class="info-label">Session Day(s)</div>
+                    <div class="info-value" id="outlineSessionDays">Wednesday , Friday</div>
+                    <div class="info-label">Credit Hours</div>
+                    <div class="info-value" id="outlineCreditHours">3/class hours(per week) | 1/lab hours(per week)</div>
+                    <div class="info-label">Course Prerequisites</div>
+                    <div class="info-value" id="outlinePrerequisites">—</div>
+                    <div class="info-label">Consultation Time</div>
+                    <div class="info-value" id="outlineConsultation">Thursday, 08:45 - 10:45</div>
+                    <div class="info-label">Email</div>
+                    <div class="info-value" id="outlineEmail">aniqa@szabist-isb.edu.pk</div>
+                    <div class="info-label">Contact #</div>
+                    <div class="info-value" id="outlineContact">051-4863363-434</div>
+                </div>
+            </section>
+
+            <section class="outline-section">
+                <header>Course Description</header>
+                <p class="placeholder-text editable-field" id="outlineCourseDescription" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Course Objective</header>
+                <ul class="placeholder-list editable-field" id="outlineCourseObjectives" contenteditable="true"></ul>
+            </section>
+
+            <section class="outline-section">
+                <header>Learning Outcomes</header>
+                <p class="placeholder-text editable-field" id="outlineLearningOutcomes" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Teaching and Learning Methodology</header>
+                <p class="placeholder-text editable-field" id="outlineMethodology" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Materials and Supplies</header>
+                <p class="placeholder-text editable-field" id="outlineMaterials" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Expected Class Conduct</header>
+                <p class="placeholder-text editable-field" id="outlineConduct" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Course Plan</header>
+                <div class="course-plan">
+                    <div class="plan-header">
+                        <div>Week</div>
+                        <div>Chapters</div>
+                        <div>Session Topic</div>
+                        <div>Assessment</div>
+                        <div>%</div>
+                    </div>
+                    <div class="plan-row placeholder-row"><div>1</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>2</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>3</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>4</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>5</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>6</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>7</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>8</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>9</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>10</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>11</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>12</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>13</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>14</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="plan-row placeholder-row"><div>15</div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                </div>
+            </section>
+
+            <section class="outline-section">
+                <header>Text Book</header>
+                <p class="placeholder-text editable-field" id="outlineTextbook" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Reference Books</header>
+                <p class="placeholder-text editable-field" id="outlineReferences" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Course Pre-Requisites</header>
+                <p class="placeholder-text editable-field" id="outlinePreReqText" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Marks Distribution</header>
+                <div class="marks-table">
+                    <div class="marks-row marks-header">
+                        <div>Marks Head</div>
+                        <div>Total Frequency</div>
+                        <div>Total Exempted</div>
+                        <div>Marks /Frequency</div>
+                        <div>Total Marks /Head</div>
+                    </div>
+                    <div class="marks-row placeholder-row"><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="marks-row placeholder-row"><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="marks-row placeholder-row"><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="marks-row placeholder-row"><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                    <div class="marks-row placeholder-row total"><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div><div contenteditable="true"></div></div>
+                </div>
+            </section>
+
+            <section class="outline-section">
+                <header>Attendance Policy</header>
+                <p class="placeholder-text editable-field" id="outlineAttendance" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Students with Physical or Educational Challenges</header>
+                <p class="placeholder-text editable-field" id="outlineChallenges" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Academic Integrity</header>
+                <p class="placeholder-text editable-field" id="outlineIntegrity" contenteditable="true"></p>
+            </section>
+
+            <section class="outline-section">
+                <header>Comments and/or Suggestions</header>
+                <p class="placeholder-text editable-field" id="outlineComments" contenteditable="true"></p>
+                <div class="feedback-grid">
+                    <div>
+                        <h4>Students</h4>
+                        <ul class="placeholder-list editable-field" id="outlineStudentFeedback" contenteditable="true"></ul>
+                    </div>
+                    <div>
+                        <h4>Instructors</h4>
+                        <ul class="placeholder-list editable-field" id="outlineInstructorFeedback" contenteditable="true"></ul>
+                    </div>
+                </div>
+            </section>
+                </section>
+            </div>
+        </section>
+
+        <aside class="hub-right-panel outline-right-panel">
+            <div class="hub-card profile-card">
+                <div class="profile-avatar" id="outlineSidebarInitials">DH</div>
+                <div class="profile-details">
+                    <h2 id="outlineSidebarName">Dr. Ahmed Hassan</h2>
+                    <p class="profile-role">Faculty Member</p>
+                    <div class="profile-meta">
+                        <div>
+                            <span>Email</span>
+                            <strong id="outlineSidebarEmail">ahmed.hassan@university.edu</strong>
+                        </div>
+                        <div>
+                            <span>Contact</span>
+                            <strong id="outlineSidebarContact">+92-51-4863363-434</strong>
+                        </div>
+                        <div>
+                            <span>Consultation</span>
+                            <strong id="outlineSidebarConsultation">Thursday, 08:45 - 10:45</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hub-card help-card">
+                <h4>Need Support?</h4>
+                <p>Academic Affairs can help with section swaps, outline approval, or schedule conflicts.</p>
+                <a href="mailto:academicaffairs@zab.edu">academicaffairs@zab.edu</a>
+            </div>
+        </aside>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>

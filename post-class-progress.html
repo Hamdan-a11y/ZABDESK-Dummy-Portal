@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZABDESK - Post Class Progress</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/course-outline.css">
+    <link rel="stylesheet" href="css/post-progress.css">
+</head>
+<body class="outline-shell-body">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <div class="logo-circle">Z</div>
+                <span class="brand-text">ZABDESK</span>
+            </div>
+            <div class="navbar-menu">
+                <span class="user-info">Faculty Member</span>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="course-hub-layout outline-shell-layout">
+        <aside class="hub-left-panel">
+            <div class="hub-menu-card">
+                <p class="menu-eyebrow">Teaching Tools</p>
+                <h3>Navigate Course</h3>
+                <p class="menu-subtext">Open a workspace for this section.</p>
+                <button type="button" class="hub-menu-btn" id="outlineNavBtn">
+                    <span class="menu-title">Course Outline</span>
+                    <small>Review / publish outline</small>
+                </button>
+                <button type="button" class="hub-menu-btn active" id="progressNavBtn">
+                    <span class="menu-title">Post Class Progress</span>
+                    <small>Record lesson coverage</small>
+                </button>
+            </div>
+
+            <div class="hub-guide-card">
+                <h4>Reminder</h4>
+                <p>Keep lecture progress updated on the same day to maintain accurate total hours.</p>
+            </div>
+        </aside>
+
+        <section class="course-hub-content outline-center-panel">
+            <div class="progress-wrapper">
+                <section class="progress-card">
+                    <header class="progress-title">Lecture Progress</header>
+
+                    <div class="summary-table primary-summary">
+                        <div class="summary-row">
+                            <div class="summary-label">Name</div>
+                            <div class="summary-value" id="progressFacultyName">Ms Aniqa .</div>
+                        </div>
+                        <div class="summary-row">
+                            <div class="summary-label">Semester</div>
+                            <div class="summary-value" id="progressSemester">Fall-2025</div>
+                        </div>
+                    </div>
+
+                    <div class="summary-table secondary-summary">
+                        <div class="summary-row program-row">
+                                <div class="summary-label">Program:</div>
+                                <div class="summary-value">
+                                    <div class="program-wrapper">
+                                        <span id="progressProgram">BCS/BS-1</span>
+                                        <span class="section-label">Section:</span>
+                                        <span class="section-value" id="progressSection">D</span>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="summary-row">
+                            <div class="summary-label">Course:</div>
+                            <div class="summary-value" id="progressCourseTitle">Fundamentals of Programming</div>
+                        </div>
+                        <div class="summary-row">
+                            <div class="summary-label">Instructor:</div>
+                            <div class="summary-value" id="progressInstructor">Ms Aniqa .</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="progress-card">
+                    <header class="progress-note">For Lecture Progress (Applicable within same date)</header>
+                    <div class="lecture-table-wrapper">
+                        <table class="lecture-table">
+                            <thead>
+                                <tr>
+                                    <th>Lecture No.</th>
+                                    <th>Date</th>
+                                    <th>Class Start Time</th>
+                                    <th>Class Finish Time</th>
+                                    <th>Held/ Cancelled/ Rescheduled</th>
+                                    <th>Accumulated Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lectureTableBody">
+                                <tr>
+                                    <td colspan="6" class="placeholder">Lecture entries will appear here once loaded.</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="total-row">
+                                    <td colspan="5">Total Hours</td>
+                                    <td id="progressTotalHours">00:00</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="progress-card next-card">
+                    <div class="next-legacy-header">Next Lecture Progress</div>
+                    <div class="next-legacy-body">
+                        <table class="next-legacy-table">
+                            <tbody>
+                                <tr>
+                                    <th>Lecture No.</th>
+                                    <td>
+                                        <input type="text" value="21" aria-label="Lecture number">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Date.</th>
+                                    <td class="date-row">
+                                        <input type="text" id="nextLegacyDateText" placeholder="DD-MM-YYYY" aria-label="Lecture date" readonly>
+                                        <input type="date" id="nextLegacyDatePicker" class="hidden-date" aria-label="Lecture date picker">
+                                        <button type="button" class="calendar-link" id="nextLegacyCalendarBtn">Show Calendar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Class Start Time.</th>
+                                    <td class="time-row">
+                                        <label class="time-label">Hours
+                                            <select aria-label="Start hours">
+                                                <option>07</option>
+                                                <option selected>08</option>
+                                                <option>09</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+                                        </label>
+                                        <label class="time-label">Minutes
+                                            <select aria-label="Start minutes">
+                                                <option>00</option>
+                                                <option>15</option>
+                                                <option selected>30</option>
+                                                <option>45</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Class End Time.</th>
+                                    <td class="time-row">
+                                        <label class="time-label">Hours
+                                            <select aria-label="End hours">
+                                                <option>07</option>
+                                                <option>08</option>
+                                                <option selected>09</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+                                        </label>
+                                        <label class="time-label">Minutes
+                                            <select aria-label="End minutes">
+                                                <option>00</option>
+                                                <option>15</option>
+                                                <option selected>30</option>
+                                                <option>45</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Topics Covered.</th>
+                                    <td>
+                                        <textarea rows="4" aria-label="Topics covered"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Class Status</th>
+                                    <td>
+                                        <select aria-label="Class status">
+                                            <option>Held</option>
+                                            <option>Cancelled</option>
+                                            <option>Rescheduled</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <aside class="hub-right-panel outline-right-panel">
+            <div class="hub-card profile-card">
+                <div class="profile-avatar" id="progressSidebarInitials">DH</div>
+                <div class="profile-details">
+                    <h2 id="progressSidebarName">Dr. Ahmed Hassan</h2>
+                    <p class="profile-role">Faculty Member</p>
+                    <div class="profile-meta">
+                        <div>
+                            <span>Email</span>
+                            <strong id="progressSidebarEmail">ahmed.hassan@university.edu</strong>
+                        </div>
+                        <div>
+                            <span>Contact</span>
+                            <strong id="progressSidebarContact">+92-51-4863363-434</strong>
+                        </div>
+                        <div>
+                            <span>Consultation</span>
+                            <strong id="progressSidebarConsultation">Thursday, 08:45 - 10:45</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hub-card help-card">
+                <h4>Need Support?</h4>
+                <p>Academic Affairs can help with section swaps, outline approval, or schedule conflicts.</p>
+                <a href="mailto:academicaffairs@zab.edu">academicaffairs@zab.edu</a>
+            </div>
+        </aside>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        (function () {
+            const dateBtn = document.getElementById("nextLegacyCalendarBtn");
+            const dateText = document.getElementById("nextLegacyDateText");
+            const datePicker = document.getElementById("nextLegacyDatePicker");
+
+            if (dateBtn && dateText && datePicker) {
+                dateBtn.addEventListener("click", () => {
+                    // Temporarily allow pointer events to maximize browser support
+                    datePicker.style.pointerEvents = "auto";
+                    if (datePicker.showPicker) {
+                        datePicker.showPicker();
+                    } else {
+                        datePicker.focus();
+                        datePicker.click();
+                    }
+                    // Re-disable pointer interactions after the call stack to keep it hidden
+                    setTimeout(() => {
+                        datePicker.style.pointerEvents = "none";
+                    }, 200);
+                });
+
+                datePicker.addEventListener("change", () => {
+                    const value = datePicker.value;
+                    if (!value) {
+                        dateText.value = "";
+                        return;
+                    }
+                    const [yyyy, mm, dd] = value.split("-");
+                    dateText.value = `${dd}-${mm}-${yyyy}`;
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

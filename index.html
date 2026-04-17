@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZABDESK Faculty Portal - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="legacy-login-page">
+    <!-- Utility top bar -->
+    <div class="legacy-topbar">
+        <div class="topbar-left">
+            <span class="top-icon">🏠</span>
+            <a href="#">Home</a>
+            <a href="#">Site map</a>
+            <a href="#">Search</a>
+        </div>
+        <div class="topbar-right">
+            <span class="top-status">Welcome to ZABDESK</span>
+        </div>
+    </div>
+
+    <!-- Primary navigation -->
+    <header class="legacy-header">
+        <nav class="legacy-nav">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About us</a>
+            <a href="#" class="nav-link">Contact</a>
+            <a href="#" class="nav-link">Products</a>
+        </nav>
+    </header>
+
+    <!-- Main login section -->
+    <main class="legacy-login-area">
+        <section class="legacy-login-panel">
+            <h2>Login</h2>
+            <p class="login-intro">Students and Faculty can now login to their own personalized home page.</p>
+
+            <form class="legacy-login-form" onsubmit="handleLogin(event)">
+                <label for="userId">User Id:</label>
+                <input type="text" id="userId" name="userId" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="campus">Campus:</label>
+                <select id="campus" name="campus">
+                    <option value="Islamabad">Islamabad</option>
+                    <option value="Karachi">Karachi</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="Dubai">Dubai</option>
+                </select>
+
+                <div class="legacy-actions">
+                    <button type="submit" class="btn-login">Login</button>
+                    <button type="button" class="btn-forgot" onclick="alert('Please contact IT support to reset the password.');">Forgot Password</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="legacy-widgets">
+            <article class="legacy-widget">
+                <h3>Student Fee Status</h3>
+                <p>Student can click here for<br><a href="#">View Fee Status</a></p>
+            </article>
+            <article class="legacy-widget">
+                <h3>Clearance Portal</h3>
+                <p>Student can click here for<br><a href="#">Zabweb Clearance Portal</a></p>
+            </article>
+            <article class="legacy-widget">
+                <h3>Classes Schedule</h3>
+                <p>Student can click here for<br><a href="#">Classes Schedule</a></p>
+            </article>
+            <article class="legacy-widget">
+                <h3>Student Handbook</h3>
+                <p>Student can click here for<br><a href="#">Student Handbook</a></p>
+            </article>
+            <article class="legacy-widget">
+                <h3>Social Media Policy</h3>
+                <p>Student can click here for<br><a href="#">Social Media Policy</a></p>
+            </article>
+            <article class="legacy-widget">
+                <h3>Exam Guidelines</h3>
+                <p>Student can click here for<br><a href="#">Examination Policy</a></p>
+            </article>
+        </section>
+    </main>
+
+    <!-- Help section -->
+    <section class="legacy-help">
+        <h4>ZABDESK Help/Queries</h4>
+        <p>For Admissions Department: <a href="mailto:admissions.office@szabist-isb.edu.pk" class="help-email">admissions.office@szabist-isb.edu.pk</a></p>
+        <p>For Academic Department: <a href="mailto:aso.office@szabist-isb.edu.pk" class="help-email">aso.office@szabist-isb.edu.pk</a></p>
+        <p>For Finance Department: <a href="mailto:finance.office@szabist-isb.edu.pk" class="help-email">finance.office@szabist-isb.edu.pk</a></p>
+        <p>For ZABSOLUTIONS Department (Technical Help/Queries): <a href="mailto:zabsolutions-isb@szabist-isb.edu.pk" class="help-email">zabsolutions-isb@szabist-isb.edu.pk</a></p>
+    </section>
+
+    <footer class="legacy-footer">
+        <div class="footer-links">
+            <a href="#">HOME</a>
+            <a href="#">BACK TO TOP</a>
+            <a href="#">MAKE ZABDESK HOMEPAGE</a>
+        </div>
+        <p>COPYRIGHT &copy; 2025 ZABSOLUTIONS. ALL RIGHTS RESERVED</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

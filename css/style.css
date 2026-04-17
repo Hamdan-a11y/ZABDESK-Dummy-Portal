@@ -1,0 +1,1019 @@
+/* ============================================================================
+   ZABDESK Faculty Portal - Global Styles
+   ============================================================================ */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+}
+
+/* ============================================================================
+   LOGIN PAGE STYLES
+   ============================================================================ */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-box {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 420px;
+    padding: 50px 40px;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-placeholder {
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.portal-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 8px;
+}
+
+.portal-subtitle {
+    font-size: 14px;
+    color: #999;
+    font-weight: 500;
+}
+
+.login-form {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s;
+    background-color: #f9f9f9;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.login-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+/* Legacy ZABDESK-inspired layout */
+body.legacy-login-page {
+    background-color: #dfe7f5;
+    min-height: 100vh;
+    color: #3c3c3c;
+}
+
+.legacy-topbar {
+    background-color: #d0dae9;
+    border-bottom: 1px solid #b5bfd1;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 40px;
+    font-size: 12px;
+    color: #0c3d7a;
+}
+
+.legacy-topbar a {
+    color: #0c3d7a;
+    margin-right: 14px;
+}
+
+.legacy-topbar .top-icon {
+    margin-right: 8px;
+}
+
+.legacy-header {
+    padding: 25px 40px 10px;
+}
+
+.legacy-nav {
+    display: flex;
+    gap: 30px;
+    font-size: 14px;
+    color: #8a99b3;
+}
+
+.legacy-nav .nav-link {
+    color: #8a99b3;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+}
+
+.legacy-login-area {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    padding: 30px 40px 10px;
+}
+
+.legacy-login-panel h2 {
+    font-size: 24px;
+    color: #6c7aa5;
+    margin-bottom: 10px;
+}
+
+.legacy-login-panel {
+    max-width: 320px;
+}
+
+.legacy-login-panel p {
+    font-size: 13px;
+    color: #5f6e94;
+    line-height: 1.4;
+    margin-bottom: 25px;
+}
+
+.legacy-login-form {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    gap: 8px;
+}
+
+.legacy-login-form input,
+.legacy-login-form select {
+    height: 26px;
+    border: 1px solid #9ba8c1;
+    border-radius: 2px;
+    padding: 2px 6px;
+    background-color: #f6f7fb;
+    font-size: 13px;
+    color: #2d2d2d;
+}
+
+.legacy-login-form label {
+    font-weight: 600;
+    color: #3c4d73;
+}
+
+.legacy-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.btn-login,
+.btn-forgot {
+    padding: 4px 16px;
+    border-radius: 3px;
+    font-size: 13px;
+    border: 1px solid #6b6b6b;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: linear-gradient(#fefefe, #d6d6d6);
+    color: #2b2b2b;
+}
+
+.btn-forgot {
+    border-color: #b10000;
+    color: #b10000;
+    background: linear-gradient(#fff2f2, #ffdada);
+}
+
+.legacy-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.legacy-widget {
+    background-color: #fefeff;
+    border-radius: 10px;
+    border: 2px solid #e3e6f2;
+    padding: 20px;
+    text-align: center;
+    box-shadow: inset 0 0 0 1px #fff;
+    color: #1f4f97;
+}
+
+.legacy-widget h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.legacy-widget p {
+    font-size: 13px;
+    color: #4d6eb1;
+    line-height: 1.4;
+}
+
+.legacy-widget a {
+    color: #1e51b2;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.legacy-help {
+    border-top: 1px solid #bdc6db;
+    margin: 40px auto 0;
+    padding: 20px 40px;
+    max-width: 1000px;
+    color: #3d4f78;
+    font-size: 13px;
+}
+
+.legacy-help h4 {
+    margin-bottom: 12px;
+    color: #1e3e72;
+}
+
+.legacy-help .help-email {
+    color: #c20f0f;
+    font-weight: 600;
+}
+
+.legacy-footer {
+    text-align: center;
+    padding: 20px 10px 30px;
+    font-size: 12px;
+    color: #4d5a79;
+}
+
+.legacy-footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 6px;
+    font-size: 11px;
+}
+
+.legacy-footer a {
+    color: #4d5a79;
+    text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+    .legacy-login-area {
+        grid-template-columns: 1fr;
+    }
+
+    .legacy-login-panel {
+        max-width: none;
+    }
+}
+
+/* ============================================================================
+   NAVIGATION BAR STYLES
+   ============================================================================ */
+
+.navbar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.navbar-logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: #5667d5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    letter-spacing: 1px;
+    box-shadow: inset 0 0 6px rgba(100, 100, 150, 0.3);
+}
+
+.brand-text {
+    letter-spacing: 1px;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-info {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================================================
+   MAIN LAYOUT STYLES
+   ============================================================================ */
+
+.main-container {
+    min-height: calc(100vh - 70px);
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+}
+
+.content-wrapper {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 45px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================================
+   PAGE HEADER STYLES
+   ============================================================================ */
+
+.page-header {
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    font-size: 14px;
+    color: #999;
+}
+
+/* ============================================================================
+   ROLE SELECTION PAGE STYLES
+   ============================================================================ */
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.role-card {
+    background: white;
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.role-card:not(.disabled):hover {
+    transform: translateY(-8px);
+    border-color: #667eea;
+    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+}
+
+.role-card.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.role-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.role-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.role-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.role-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.role-card:not(.disabled) .role-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.role-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* ============================================================================
+   COURSES PAGE STYLES
+   ============================================================================ */
+
+.course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.course-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    border: 1px solid #e1e5ef;
+    border-radius: 10px;
+    padding: 18px 22px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+.course-button-wrapper {
+    flex-shrink: 0;
+}
+
+.course-code-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #1f4d8b 0%, #3575c0 100%);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-code-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(31, 77, 139, 0.35);
+}
+
+.course-info-block {
+    flex: 1;
+}
+
+.course-short {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f2f54;
+    margin-bottom: 4px;
+}
+
+.course-title {
+    font-size: 14px;
+    color: #3f4b63;
+    margin-bottom: 3px;
+}
+
+.course-meta {
+    font-size: 12px;
+    color: #7a879f;
+}
+
+.course-meta span {
+    font-weight: 600;
+    color: #4d5c78;
+    margin-right: 8px;
+}
+
+/* ============================================================================
+   COURSE HUB PAGE
+   ============================================================================ */
+
+.course-hub-body {
+    background-color: #e9eef7;
+}
+
+.course-hub-layout {
+    max-width: 1280px;
+    margin: 35px auto 70px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr) 320px;
+    gap: 24px;
+}
+
+.hub-left-panel,
+.hub-right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hub-menu-card,
+.hub-guide-card,
+.hub-card,
+.help-card {
+    background-color: #fff;
+    border-radius: 18px;
+    padding: 22px;
+    border: 1px solid #d9deea;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.menu-eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8b93ad;
+    margin-bottom: 4px;
+}
+
+.hub-menu-card h3 {
+    margin-bottom: 6px;
+    color: #1f2a44;
+}
+
+.menu-subtext {
+    font-size: 13px;
+    color: #6a7491;
+    margin-bottom: 16px;
+}
+
+.hub-menu-btn {
+    width: 100%;
+    border: 1px solid transparent;
+    border-left: 4px solid #c6cde0;
+    border-radius: 10px;
+    padding: 14px 16px 14px 18px;
+    margin-bottom: 12px;
+    background: linear-gradient(120deg, #f8faff, #f1f4fb);
+    text-align: left;
+    color: #2f3b58;
+    transition: all 0.2s ease;
+}
+
+.hub-menu-btn:last-of-type {
+    margin-bottom: 0;
+}
+
+.hub-menu-btn .menu-title {
+    font-weight: 600;
+}
+
+.hub-menu-btn small {
+    display: block;
+    margin-top: 4px;
+    color: #7b85a3;
+    font-size: 12px;
+}
+
+.hub-menu-btn:hover {
+    border-color: #8d9fe0;
+    transform: translateX(4px);
+    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+}
+
+.hub-menu-btn.active {
+    border-left-color: #5f7bea;
+    background: linear-gradient(120deg, #5f7bea, #8657e8);
+    color: #fff;
+}
+
+.hub-menu-btn.active small {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hub-guide-card h4 {
+    margin-bottom: 8px;
+    color: #1f2a44;
+}
+
+.hub-guide-card p {
+    color: #5c6587;
+    line-height: 1.5;
+}
+
+.course-hub-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hub-hero {
+    background: linear-gradient(130deg, #6b7fe0, #8e63d7);
+    border-radius: 22px;
+    padding: 28px;
+    color: #fff;
+    box-shadow: 0 25px 50px rgba(102, 126, 234, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hub-course-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 18px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.18);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.hub-hero h1 {
+    font-size: 30px;
+    margin-bottom: 6px;
+}
+
+.hub-hero-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 15px;
+}
+
+.hub-card {
+    border: none;
+}
+
+.details-card h3,
+.notes-card h3,
+.help-card h4 {
+    margin-bottom: 14px;
+    color: #1f2a44;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.details-grid span {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #7d88a6;
+}
+
+.details-grid strong {
+    display: block;
+    margin-top: 4px;
+    color: #1f2a44;
+}
+
+.notes-card p {
+    color: #4b5575;
+    line-height: 1.6;
+}
+
+.profile-card {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.profile-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #9face6, #74ebd5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.profile-details h2 {
+    margin-bottom: 4px;
+    font-size: 22px;
+}
+
+.profile-role {
+    color: #7a84a6;
+    margin-bottom: 14px;
+}
+
+.profile-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.profile-meta span {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #a0a8c4;
+}
+
+.profile-meta strong {
+    display: block;
+    color: #1f2a44;
+    margin-top: 2px;
+}
+
+.help-card a {
+    color: #5f7bea;
+    font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+    .course-hub-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hub-left-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .hub-menu-card,
+    .hub-guide-card {
+        flex: 1 1 280px;
+    }
+
+    .hub-right-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .hub-right-panel .hub-card {
+        flex: 1 1 320px;
+    }
+
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .hub-hero-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .hub-left-panel {
+        flex-direction: column;
+    }
+
+    .hub-right-panel {
+        flex-direction: column;
+    }
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+    .main-container {
+        padding: 30px 20px 50px;
+    }
+
+    .content-wrapper {
+        padding: 35px;
+    }
+
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-box {
+        padding: 40px 25px;
+        max-width: 90%;
+    }
+
+    .navbar-container {
+        padding: 0 15px;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-end;
+    }
+
+    .content-wrapper {
+        padding: 25px;
+    }
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+    .course-code-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .sidebar-menu {
+        gap: 5px;
+    }
+
+    .menu-item a {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 30px 20px;
+    }
+
+    .portal-title {
+        font-size: 24px;
+    }
+
+    .navbar-logo {
+        font-size: 16px;
+    }
+
+    .navbar-logo-img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .page-header h1 {
+        font-size: 20px;
+    }
+
+    .role-icon {
+        font-size: 48px;
+    }
+
+    .course-header {
+        min-height: 100px;
+        padding: 20px;
+    }
+
+    .course-title {
+        font-size: 16px;
+    }
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}

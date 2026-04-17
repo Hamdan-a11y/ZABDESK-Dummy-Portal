@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZABDESK - Course Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="course-hub-body">
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <div class="logo-circle">Z</div>
+                <span class="brand-text">ZABDESK</span>
+            </div>
+            <div class="navbar-menu">
+                <span class="user-info">Faculty Member</span>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="course-hub-layout">
+        <aside class="hub-left-panel">
+            <div class="hub-menu-card">
+                <p class="menu-eyebrow">Teaching Tools</p>
+                <h3>Course Workspace</h3>
+                <p class="menu-subtext">Navigate to a teaching area.</p>
+                <button class="hub-menu-btn active" id="outlineNavBtn">
+                    <span class="menu-title">Course Outline</span>
+                    <small>Review / publish outline</small>
+                </button>
+                <button class="hub-menu-btn" id="progressNavBtn">
+                    <span class="menu-title">Post Class Progress</span>
+                    <small>Record lesson coverage</small>
+                </button>
+            </div>
+            <div class="hub-guide-card">
+                <h4>Reminder</h4>
+                <p>Submit course outlines for approval before the start of the semester. Updates propagate to all enrolled students automatically.</p>
+            </div>
+        </aside>
+
+        <section class="course-hub-content">
+            <div class="hub-hero">
+                <div class="hub-course-pill" id="hubCourseCode">FOP (CS101)</div>
+                <h1 id="hubCourseTitle">Fundamentals of Programming</h1>
+                <div class="hub-hero-meta">
+                    <p>Semester: <span id="hubCourseSemester">Fall 2024</span></p>
+                    <p>Section: <span id="hubCourseClass">BCS/BS-1 (D)</span></p>
+                </div>
+            </div>
+
+            <div class="hub-card details-card">
+                <h3>Course Snapshot</h3>
+                <div class="details-grid">
+                    <div>
+                        <span>Class Timing</span>
+                        <strong id="hubClassTiming">2:00 - 3:30 , 8:00 - 9:30 ORIC Hall</strong>
+                    </div>
+                    <div>
+                        <span>Session Days</span>
+                        <strong id="hubSessionDays">Wednesday , Friday</strong>
+                    </div>
+                    <div>
+                        <span>Credit Hours</span>
+                        <strong id="hubCreditHours">3/class hours(per week)</strong>
+                    </div>
+                    <div>
+                        <span>Prerequisites</span>
+                        <strong id="hubPrerequisites">—</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hub-card notes-card">
+                <h3>Faculty Notes</h3>
+                <p id="hubNotesPlaceholder">Use this space to keep quick reminders or share announcements with your course team.</p>
+            </div>
+        </section>
+
+        <aside class="hub-right-panel">
+            <div class="hub-card profile-card">
+                <div class="profile-avatar" id="hubFacultyInitials">DH</div>
+                <div class="profile-details">
+                    <h2 id="hubFacultyName">Dr. Ahmed Hassan</h2>
+                    <p class="profile-role">Faculty Member</p>
+                    <div class="profile-meta">
+                        <div>
+                            <span>Email</span>
+                            <strong id="hubFacultyEmail">ahmed.hassan@university.edu</strong>
+                        </div>
+                        <div>
+                            <span>Contact</span>
+                            <strong id="hubFacultyContact">+92-51-4863363-434</strong>
+                        </div>
+                        <div>
+                            <span>Consultation</span>
+                            <strong id="hubConsultationTime">Thursday, 08:45 - 10:45</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hub-card help-card">
+                <h4>Need Support?</h4>
+                <p>Academic Affairs can help with section swaps, outline approval, or schedule conflicts.</p>
+                <a href="mailto:academicaffairs@zab.edu">academicaffairs@zab.edu</a>
+            </div>
+        </aside>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

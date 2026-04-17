@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZABDESK - Faculty Courses</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <div class="logo-circle">Z</div>
+                <span class="brand-text">ZABDESK</span>
+            </div>
+            <div class="navbar-menu">
+                <span class="user-info">Dr. Ahmed Hassan</span>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="content-wrapper">
+            <!-- Page Title -->
+            <div class="page-header">
+                <h1>My Courses</h1>
+                <p>View and manage your assigned courses</p>
+            </div>
+
+            <!-- Courses list -->
+            <div id="coursesList" class="course-list">
+                <!-- Courses will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize faculty courses on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayFacultyCourses();
+        });
+    </script>
+</body>
+</html>
