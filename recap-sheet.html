@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZABDESK - Recap Sheet (Enter Marks)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/post-progress.css">
+</head>
+<body class="outline-shell-body">
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <div class="logo-circle">Z</div>
+                <span class="brand-text">ZABDESK</span>
+            </div>
+            <div class="navbar-menu">
+                <span class="user-info">Faculty Member</span>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="course-hub-layout outline-shell-layout">
+        <aside class="hub-left-panel">
+            <div class="hub-menu-card">
+                <p class="menu-eyebrow">Teaching Tools</p>
+                <h3>Navigate Course</h3>
+                <p class="menu-subtext">Open a workspace for this section.</p>
+                <button type="button" class="hub-menu-btn" id="outlineNavBtn">
+                    <span class="menu-title">Course Outline</span>
+                    <small>Review / publish outline</small>
+                </button>
+                <button type="button" class="hub-menu-btn" id="progressNavBtn">
+                    <span class="menu-title">Post Class Progress</span>
+                    <small>Record lesson coverage</small>
+                </button>
+                <button type="button" class="hub-menu-btn active" id="recapNavBtn">
+                    <span class="menu-title">Recap Sheet (Enter Marks)</span>
+                    <small>Record assessment scores</small>
+                </button>
+            </div>
+
+            <div class="hub-guide-card">
+                <h4>Reminder</h4>
+                <p>Enter student marks promptly to ensure timely feedback. Marks can be edited until the grading deadline.</p>
+            </div>
+        </aside>
+
+        <section class="course-hub-content outline-center-panel">
+            <div class="outline-wrapper">
+                <section class="outline-card">
+                    <header class="outline-title">Recap Sheet - Enter Marks</header>
+
+                    <div class="summary-table primary-summary">
+                        <div class="summary-row">
+                            <div class="summary-label">Instructor</div>
+                            <div class="summary-value" id="recapInstructor">Dr. Ahmed Hassan</div>
+                        </div>
+                        <div class="summary-row">
+                            <div class="summary-label">Semester</div>
+                            <div class="summary-value" id="recapSemester">Fall-2024</div>
+                        </div>
+                    </div>
+
+                    <div class="summary-table secondary-summary">
+                        <div class="summary-row">
+                            <div class="summary-label">Class:</div>
+                            <div class="summary-value" id="recapClassName">BCS/BS-1 (D)</div>
+                        </div>
+                        <div class="summary-row">
+                            <div class="summary-label">Course:</div>
+                            <div class="summary-value" id="recapCourseTitle">CS101 Fundamentals of Programming</div>
+                        </div>
+                    </div>
+
+                    <section class="outline-section">
+                        <header>Assessment Methods</header>
+                        <div class="assessment-grid">
+                            <div class="assessment-item">
+                                <h4>Quizzes</h4>
+                                <p>Value: 10%</p>
+                                <input type="number" placeholder="Enter quiz marks" min="0" max="100">
+                            </div>
+                            <div class="assessment-item">
+                                <h4>Assignments</h4>
+                                <p>Value: 15%</p>
+                                <input type="number" placeholder="Enter assignment marks" min="0" max="100">
+                            </div>
+                            <div class="assessment-item">
+                                <h4>Midterm Exam</h4>
+                                <p>Value: 25%</p>
+                                <input type="number" placeholder="Enter midterm marks" min="0" max="100">
+                            </div>
+                            <div class="assessment-item">
+                                <h4>Final Exam</h4>
+                                <p>Value: 50%</p>
+                                <input type="number" placeholder="Enter final exam marks" min="0" max="100">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="outline-section">
+                        <header>Student Marks Entry</header>
+                        <div class="marks-table-wrapper">
+                            <table class="marks-table">
+                                <thead>
+                                    <tr>
+                                        <th>Roll No</th>
+                                        <th>Student Name</th>
+                                        <th>Quiz</th>
+                                        <th>Assignment</th>
+                                        <th>Midterm</th>
+                                        <th>Final</th>
+                                        <th>Total</th>
+                                        <th>Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>001</td>
+                                        <td>Muhammad Ali</td>
+                                        <td><input type="number" min="0" max="100" value="85"></td>
+                                        <td><input type="number" min="0" max="100" value="90"></td>
+                                        <td><input type="number" min="0" max="100" value="78"></td>
+                                        <td><input type="number" min="0" max="100" value="82"></td>
+                                        <td>82</td>
+                                        <td>B</td>
+                                    </tr>
+                                    <tr>
+                                        <td>002</td>
+                                        <td>Fatima Khan</td>
+                                        <td><input type="number" min="0" max="100" value="92"></td>
+                                        <td><input type="number" min="0" max="100" value="88"></td>
+                                        <td><input type="number" min="0" max="100" value="95"></td>
+                                        <td><input type="number" min="0" max="100" value="90"></td>
+                                        <td>91</td>
+                                        <td>A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>003</td>
+                                        <td>Hassan Ahmed</td>
+                                        <td><input type="number" min="0" max="100" value="75"></td>
+                                        <td><input type="number" min="0" max="100" value="80"></td>
+                                        <td><input type="number" min="0" max="100" value="72"></td>
+                                        <td><input type="number" min="0" max="100" value="68"></td>
+                                        <td>72</td>
+                                        <td>C+</td>
+                                    </tr>
+                                    <tr>
+                                        <td>004</td>
+                                        <td>Ayesha Malik</td>
+                                        <td><input type="number" min="0" max="100" value="88"></td>
+                                        <td><input type="number" min="0" max="100" value="85"></td>
+                                        <td><input type="number" min="0" max="100" value="89"></td>
+                                        <td><input type="number" min="0" max="100" value="86"></td>
+                                        <td>86</td>
+                                        <td>B+</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <div class="action-buttons">
+                        <button type="button" class="btn-primary" onclick="saveMarks()">Save Marks</button>
+                        <button type="button" class="btn-secondary" onclick="resetForm()">Reset</button>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthentication();
+            setupRecapSheetNavigation();
+            populateRecapSheetData();
+        });
+
+        function setupRecapSheetNavigation() {
+            const outlineBtn = document.getElementById('outlineNavBtn');
+            const progressBtn = document.getElementById('progressNavBtn');
+            const recapBtn = document.getElementById('recapNavBtn');
+            const courseId = getQueryParam('courseId') || 1;
+
+            if (outlineBtn) {
+                outlineBtn.addEventListener('click', () => {
+                    window.location.href = `course-outline.html?courseId=${courseId}`;
+                });
+            }
+
+            if (progressBtn) {
+                progressBtn.addEventListener('click', () => {
+                    window.location.href = `post-class-progress.html?courseId=${courseId}`;
+                });
+            }
+
+            if (recapBtn) {
+                recapBtn.addEventListener('click', () => {
+                    window.location.href = `recap-sheet.html?courseId=${courseId}`;
+                });
+            }
+        }
+
+        function populateRecapSheetData() {
+            const courseId = getQueryParam('courseId') || 1;
+            const course = mockCourses.find(c => c.id == courseId);
+            const currentUser = getCurrentUser();
+
+            if (course) {
+                document.getElementById('recapInstructor').textContent = currentUser ? currentUser.name : course.instructor;
+                document.getElementById('recapSemester').textContent = course.semester;
+                document.getElementById('recapClassName').textContent = course.className;
+                document.getElementById('recapCourseTitle').textContent = `${course.code} ${course.title}`;
+            }
+        }
+
+        function saveMarks() {
+            alert('Marks saved successfully! An automatic email notification will be sent to students.');
+        }
+
+        function resetForm() {
+            if (confirm('Are you sure you want to reset all marks?')) {
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>

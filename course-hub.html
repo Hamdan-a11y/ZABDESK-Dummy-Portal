@@ -34,8 +34,10 @@
                 <button class="hub-menu-btn" id="progressNavBtn">
                     <span class="menu-title">Post Class Progress</span>
                     <small>Record lesson coverage</small>
-                </button>
-            </div>
+                </button>                <button type="button" class="hub-menu-btn" id="recapNavBtn">
+                    <span class="menu-title">Recap Sheet (Enter Marks)</span>
+                    <small>Record assessment scores</small>
+                </button>            </div>
             <div class="hub-guide-card">
                 <h4>Reminder</h4>
                 <p>Submit course outlines for approval before the start of the semester. Updates propagate to all enrolled students automatically.</p>
@@ -112,5 +114,53 @@
     </main>
 
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthentication();
+            setupCourseHubNavigation();
+            populateCourseHubData();
+        });
+
+        function setupCourseHubNavigation() {
+            const outlineBtn = document.getElementById('outlineNavBtn');
+            const progressBtn = document.getElementById('progressNavBtn');
+            const recapBtn = document.getElementById('recapNavBtn');
+            const courseId = getQueryParam('courseId') || 1;
+
+            if (outlineBtn) {
+                outlineBtn.addEventListener('click', () => {
+                    window.location.href = `course-outline.html?courseId=${courseId}`;
+                });
+            }
+
+            if (progressBtn) {
+                progressBtn.addEventListener('click', () => {
+                    window.location.href = `post-class-progress.html?courseId=${courseId}`;
+                });
+            }
+
+            if (recapBtn) {
+                recapBtn.addEventListener('click', () => {
+                    window.location.href = `recap-sheet.html?courseId=${courseId}`;
+                });
+            }
+        }
+
+        function populateCourseHubData() {
+            const courseId = getQueryParam('courseId') || 1;
+            const course = mockCourses.find(c => c.id == courseId);
+
+            if (course) {
+                document.getElementById('hubCourseCode').textContent = `${course.shortName} (${course.code})`;
+                document.getElementById('hubCourseTitle').textContent = course.title;
+                document.getElementById('hubCourseSemester').textContent = course.semester;
+                document.getElementById('hubCourseClass').textContent = course.className;
+                document.getElementById('hubClassTiming').textContent = course.classTiming;
+                document.getElementById('hubSessionDays').textContent = course.sessionDays;
+                document.getElementById('hubCreditHours').textContent = course.creditHours;
+                document.getElementById('hubPrerequisites').textContent = course.prerequisites;
+            }
+        }
+    </script>
 </body>
 </html>

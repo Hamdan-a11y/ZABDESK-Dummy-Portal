@@ -36,6 +36,10 @@
                     <span class="menu-title">Post Class Progress</span>
                     <small>Record lesson coverage</small>
                 </button>
+                <button type="button" class="hub-menu-btn" id="recapNavBtn">
+                    <span class="menu-title">Recap Sheet (Enter Marks)</span>
+                    <small>Record assessment scores</small>
+                </button>
             </div>
 
             <div class="hub-guide-card">
@@ -250,5 +254,30 @@
         </aside>
     </main>
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthentication();
+            setupOutlinePageNavigation();
+            populateCourseOutlinePage();
+        });
+
+        function setupOutlinePageNavigation() {
+            const progressBtn = document.getElementById('progressNavBtn');
+            const recapBtn = document.getElementById('recapNavBtn');
+            const courseId = getQueryParam('courseId') || 1;
+
+            if (progressBtn) {
+                progressBtn.addEventListener('click', () => {
+                    window.location.href = `post-class-progress.html?courseId=${courseId}`;
+                });
+            }
+
+            if (recapBtn) {
+                recapBtn.addEventListener('click', () => {
+                    window.location.href = `recap-sheet.html?courseId=${courseId}`;
+                });
+            }
+        }
+    </script>
 </body>
 </html>
