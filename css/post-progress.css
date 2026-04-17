@@ -499,3 +499,178 @@
     font-weight: 600;
     font-size: 14px;
 }
+
+/* Marks Entry View Styles */
+.recap-marks-info {
+    background-color: #e5f2fb;
+    border: 2px solid #0b4f70;
+    padding: 0;
+    margin: 0;
+}
+
+.recap-marks-header-info {
+    background-color: #0b4f70;
+    color: #fff;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.recap-marks-table-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    background-color: #e5f2fb;
+}
+
+.recap-marks-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 10px 12px;
+    border-right: 2px solid #0b4f70;
+    border-bottom: 2px solid #0b4f70;
+}
+
+.recap-marks-row:nth-child(3n) {
+    border-right: none;
+}
+
+.recap-marks-row:last-child {
+    border-bottom: none;
+}
+
+.recap-marks-label {
+    font-weight: 700;
+    color: #000;
+    padding-right: 12px;
+    border-right: 2px solid #0b4f70;
+    margin-right: 12px;
+}
+
+.recap-marks-value {
+    color: #0b4f70;
+    font-weight: 600;
+    padding-left: 12px;
+}
+
+.marks-entry-table-section {
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.marks-entry-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 4px solid #0b4f70;
+    margin-top: 0;
+}
+
+.marks-entry-table thead {
+    background-color: #0b4f70;
+    color: #fff;
+}
+
+.marks-entry-table th {
+    padding: 14px 16px;
+    text-align: center;
+    font-weight: 700;
+    border: 2px solid #fff;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.marks-entry-table td {
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    background-color: #f7fbff;
+    text-align: center;
+}
+
+.marks-entry-table td:first-child,
+.marks-entry-table td:nth-child(2) {
+    text-align: left;
+}
+
+.marks-entry-table tbody tr:hover {
+    background-color: #e5f2fb;
+}
+
+.marks-entry-table tbody tr.highlight-student-row {
+    background-color: #ff6b6b !important;
+}
+
+.marks-entry-table tbody tr.highlight-student-row td {
+    background-color: #ff6b6b;
+    color: #fff;
+    border-color: #c92a2a;
+    font-weight: 700;
+}
+
+.student-marks-input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 2px solid #0b4f70;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #fff;
+    color: #0b4f70;
+    text-align: center;
+}
+
+.student-marks-input:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(11, 79, 112, 0.5);
+    border-color: #083a52;
+}
+
+.marks-entry-table tbody tr.highlight-student-row .student-marks-input {
+    background-color: #ffc0c0;
+    color: #c92a2a;
+    border-color: #c92a2a;
+}
+
+.recap-entry-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    padding: 20px 16px;
+    background-color: #e5f2fb;
+    flex-wrap: wrap;
+    border-top: 2px solid #0b4f70;
+}
+
+.btn-save-marks,
+.btn-back {
+    padding: 10px 28px;
+    border: 2px solid #0b4f70;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-save-marks {
+    background-color: #0b4f70;
+    color: #fff;
+}
+
+.btn-save-marks:hover {
+    background-color: #083a52;
+    box-shadow: 0 4px 8px rgba(11, 79, 112, 0.3);
+}
+
+.btn-back {
+    background-color: #fff;
+    color: #0b4f70;
+}
+
+.btn-back:hover {
+    background-color: #0b4f70;
+    color: #fff;
+}
