@@ -266,15 +266,54 @@
             }
         }
 
-        // Sample student names for generating random data
-        const studentFirstNames = [
-            'Muhammad', 'Abdullah', 'Ahmad', 'Ahmed', 'Ali', 'Hassan', 'Omar', 'Amir', 'Karim', 'Jamal',
-            'Fatima', 'Aisha', 'Zainab', 'Noor', 'Layla', 'Hana', 'Sara', 'Maryam', 'Dina', 'Leila'
-        ];
-
-        const studentLastNames = [
-            'Khan', 'Ahmed', 'Hassan', 'Ali', 'Malik', 'Hussain', 'Ibrahim', 'Asad', 'Raza', 'Imran',
-            'Rahim', 'Noor', 'Saleem', 'Kareem', 'Shakir', 'Nasir', 'Anwar', 'Rashid', 'Fahad', 'Mehdi'
+        // Student data from spreadsheet
+        const studentDataList = [
+            { name: 'ADIR MALIK', quiz1: 3, quiz2: 1.8, quiz3: 1, quiz4: 4.5, a1: 1.5, a2: 2.3, a3: 0.1, a4: 0.3, final: 22, midterm: 22 },
+            { name: 'FARHAN AHMED', quiz1: 0.5, quiz2: 0.2, quiz3: 0.2, quiz4: 0.5, a1: 0.3, a2: 0.2, a3: 0.1, a4: 0.1, final: 25, midterm: 17 },
+            { name: 'FAHAD SHAHID', quiz1: 3.5, quiz2: 1.5, quiz3: 1.3, quiz4: 0.7, a1: 0, a2: 2.2, a3: 2.2, a4: 2.8, final: 31.7, midterm: 17.2 },
+            { name: 'AMINA SHAQID', quiz1: 2.2, quiz2: 0.5, quiz3: 1.6, quiz4: 4.4, a1: 2.4, a2: 0.7, a3: 0.7, a4: 0.2, final: 7.8, midterm: 23.1 },
+            { name: 'JILL KARLA', quiz1: 1.2, quiz2: 1.8, quiz3: 1.7, quiz4: 2.1, a1: 1.6, a2: 0.2, a3: 0.2, a4: 0.2, final: 18.4, midterm: 39.2 },
+            { name: 'ADAN ULLAH', quiz1: 2.3, quiz2: 4, quiz3: 2.6, quiz4: 1.1, a1: 1.4, a2: 1.2, a3: 0.3, a4: 0.7, final: 17.4, midterm: 15.2 },
+            { name: 'UMAR AQEEL', quiz1: 3.8, quiz2: 4, quiz3: 2.4, quiz4: 0.1, a1: 0.3, a2: 0.1, a3: 0.1, a4: 0.1, final: 22.1, midterm: 32.5 },
+            { name: 'MOHAMMAD ANWAR', quiz1: 3.2, quiz2: 1.9, quiz3: 1.3, quiz4: 1.8, a1: 2.5, a2: 0.5, a3: 1, a4: 1.1, final: 5.8, midterm: 17 },
+            { name: 'MUHAMMAD HASSAN', quiz1: 2.2, quiz2: 2.5, quiz3: 2.3, quiz4: 2.3, a1: 2.9, a2: 1.4, a3: 3, a4: 0.2, final: 18.8, midterm: 37.1 },
+            { name: 'HAMED HARIF', quiz1: 3.5, quiz2: 2.6, quiz3: 1.8, quiz4: 0.5, a1: 2.5, a2: 0.2, a3: 0.4, a4: 0.5, final: 15.8, midterm: 21.5 },
+            { name: 'ZAINAB JASMINE', quiz1: 2.2, quiz2: 3.6, quiz3: 3, quiz4: 1.2, a1: 0.8, a2: 0.9, a3: 0.4, a4: 1.1, final: 24.4, midterm: 11.8 },
+            { name: 'HAMZA KASIM', quiz1: 0, quiz2: 3.7, quiz3: 3.1, quiz4: 3, a1: 2.3, a2: 0.8, a3: 1.5, a4: 0.2, final: 24.4, midterm: 11.8 },
+            { name: 'MUHAMMAD LASHKARI', quiz1: 3, quiz2: 2.7, quiz3: 0.3, quiz4: 1.9, a1: 1.8, a2: 0.8, a3: 1.9, a4: 0.8, final: 27.1, midterm: 29.7 },
+            { name: 'NAYMIN USMAN', quiz1: 3.1, quiz2: 1, quiz3: 2.5, quiz4: 2.5, a1: 2.9, a2: 2.8, a3: 0.1, a4: 0.2, final: 10.2, midterm: 32.7 },
+            { name: 'NOREEN TARIQ', quiz1: 0, quiz2: 3.7, quiz3: 3.1, quiz4: 3, a1: 2.3, a2: 0.8, a3: 1.5, a4: 0.2, final: 24.4, midterm: 11.8 },
+            { name: 'SARA USMAN', quiz1: 3.3, quiz2: 0.7, quiz3: 1.6, quiz4: 2.8, a1: 2.3, a2: 0.1, a3: 0.5, a4: 1.2, final: 27.1, midterm: 29.7 },
+            { name: 'SARDAR AZMAT', quiz1: 3.1, quiz2: 2.5, quiz3: 1.4, quiz4: 1, a1: 1.6, a2: 1.2, a3: 0.5, a4: 0.1, final: 18.8, midterm: 37.1 },
+            { name: 'NAGAHAR RAZA', quiz1: 1.3, quiz2: 0.2, quiz3: 0.8, quiz4: 1.4, a1: 1, a2: 2.3, a3: 0.1, a4: 0.4, final: 12.8, midterm: 23.5 },
+            { name: 'MUHAMMAD IRFAN', quiz1: 3.8, quiz2: 0.3, quiz3: 1.6, quiz4: 0.1, a1: 1.3, a2: 0.4, a3: 0.2, a4: 0.1, final: 21.8, midterm: 14.6 },
+            { name: 'GINA GRAHAMS', quiz1: 4.3, quiz2: 0.2, quiz3: 0.5, quiz4: 1.3, a1: 2.2, a2: 0.5, a3: 0.5, a4: 1.5, final: 25.9, midterm: 14.6 },
+            { name: 'SAMANTHA SHAW', quiz1: 1.8, quiz2: 2.1, quiz3: 0.3, quiz4: 1.3, a1: 2, a2: 2.4, a3: 0.1, a4: 0.6, final: 19.4, midterm: 24.8 },
+            { name: 'LATA KARIM', quiz1: 2.1, quiz2: 1.1, quiz3: 0.2, quiz4: 2, a1: 0.6, a2: 0.6, a3: 1.5, a4: 1.8, final: 18.4, midterm: 16.6 },
+            { name: 'SANCHETA GUPTA', quiz1: 3.4, quiz2: 1.1, quiz3: 1, a4: 0.1, a1: 0.7, a2: 0.1, a3: 0.5, quiz4: 0.1, final: 34.7, midterm: 26.4 },
+            { name: 'TAHA MAHMOUD', quiz1: 3.5, quiz2: 3.4, quiz3: 1, a4: 0.1, a1: 0.7, a2: 0.1, a3: 0.5, quiz4: 0.1, final: 34.7, midterm: 26.4 },
+            { name: 'RAJESH RAO', quiz1: 3.2, quiz2: 1.5, quiz3: 1.2, a4: 2.3, a1: 1.7, a2: 0.2, a3: 0.1, quiz4: 1.7, final: 27.1, midterm: 18.8 },
+            { name: 'NOOR UL AIN', quiz1: 1.2, quiz2: 3.6, quiz3: 2.1, a4: 0.1, a1: 0, a2: 0.4, a3: 2.1, quiz4: 2.6, final: 23.3, midterm: 18.9 },
+            { name: 'AYESHA AHMED', quiz1: 1.4, quiz2: 3.4, quiz3: 2.7, a4: 0.7, a1: 2.7, a2: 1.3, a3: 1.1, quiz4: 0.5, final: 20.5, midterm: 25.8 },
+            { name: 'SADAM AHMED', quiz1: 1.4, quiz2: 3.4, quiz3: 2.7, a4: 0.7, a1: 2.7, a2: 1.3, a3: 1.1, quiz4: 0.5, final: 30.5, midterm: 19.8 },
+            { name: 'HAXIA TAFREN', quiz1: 1.3, quiz2: 3.1, quiz3: 3.4, a4: 0.7, a1: 2.1, a2: 1.3, a3: 1.5, quiz4: 2.1, final: 31.7, midterm: 11.8 },
+            { name: 'KEYA TAFREN', quiz1: 1.4, quiz2: 3.2, quiz3: 3.7, a4: 0.4, a1: 2.3, a2: 1.5, a3: 0.4, quiz4: 2.1, final: 27.1, midterm: 28.9 },
+            { name: 'RUSHID FARIMA', quiz1: 2.4, quiz2: 4.3, quiz3: 3.6, a4: 1.3, a1: 0.8, a2: 1.5, a3: 1.5, quiz4: 1.3, final: 28.4, midterm: 25, },
+            { name: 'SAMANT ASHA', quiz1: 1.9, quiz2: 4.1, quiz3: 2.7, a4: 2.7, a1: 1.8, a2: 0.2, a3: 1.5, quiz4: 1.2, final: 20.7, midterm: 26.2 },
+            { name: 'UDAWART ALL', quiz1: 0.2, quiz2: 1.7, quiz3: 1.5, a4: 2.3, a1: 1.1, a2: 0.8, a3: 1.2, quiz4: 2.3, final: 15.8, midterm: 31.4 },
+            { name: 'UMER FAROOQ', quiz1: 1.2, quiz2: 1.2, quiz3: 2.2, a4: 0.3, a1: 0.8, a2: 0.9, a3: 0.8, quiz4: 2.3, final: 20.3, midterm: 23.5 },
+            { name: 'MUHAMMAD ANSARI', quiz1: 1.1, quiz2: 1.1, quiz3: 0.5, a4: 1, a1: 0.3, a2: 0, a3: 0.3, quiz4: 0.5, final: 9.8, midterm: 14.5 },
+            { name: 'KADIR AHMED', quiz1: 1.2, quiz2: 2.1, quiz3: 1.3, a4: 2.9, a1: 1.5, a2: 0.4, a3: 0.3, quiz4: 1.2, final: 27.1, midterm: 18.8 },
+            { name: 'KULUMA AYUB', quiz1: 3, quiz2: 4.1, quiz3: 3.6, a4: 1.3, a1: 0.8, a2: 1.5, a3: 1.5, quiz4: 1.3, final: 28.4, midterm: 25 },
+            { name: 'ZOE GRANT', quiz1: 2.1, quiz2: 2.1, quiz3: 1.3, a4: 0.3, a1: 0.9, a2: 0.5, a3: 0.4, quiz4: 0.2, final: 10.8, midterm: 24.8 },
+            { name: 'SHAINA KHAN', quiz1: 3.1, quiz2: 2.6, quiz3: 2.4, a4: 0.3, a1: 0.9, a2: 0.5, a3: 0.4, quiz4: 0.2, final: 9.3, midterm: 22.2 },
+            { name: 'ABDULLAH BIN ASAD', quiz1: 2.9, quiz2: 2.2, quiz3: 2.3, a4: 0.6, a1: 0.9, a2: 1, a3: 0.3, quiz4: 0.1, final: 18.8, midterm: 30.5 },
+            { name: 'YASIR AHMED', quiz1: 1.5, quiz2: 0.4, quiz3: 1.7, a4: 0.3, a1: 1.3, a2: 0.1, a3: 0.8, quiz4: 0.5, final: 21.3, midterm: 14.8 },
+            { name: 'HUAXIA IQBAL', quiz1: 1.3, quiz2: 3.3, quiz3: 1.1, a4: 2.7, a1: 0.8, a2: 0.3, a3: 0.2, quiz4: 0.5, final: 11.4, midterm: 9.3 },
+            { name: 'RALEIGH ALI', quiz1: 1.2, quiz2: 0.4, quiz3: 0.7, a4: 1, a1: 0.1, a2: 1.1, a3: 0.3, quiz4: 0.8, final: 13, midterm: 21.5 },
+            { name: 'JAVED SEHGAL', quiz1: 2.3, quiz2: 0.1, quiz3: 0.1, a4: 2.3, a1: 0.7, a2: 0.2, a3: 0.4, quiz4: 0.1, final: 9.2, midterm: 21.7 },
+            { name: 'AJAAZ ALI', quiz1: 1, quiz2: 0.7, quiz3: 0.3, a4: 0.4, a1: 0.1, a2: 0.1, a3: 0.4, quiz4: 0, final: 8.1, midterm: 17.3 },
+            { name: 'TAUFIQ RAZZAQ', quiz1: 2.3, quiz2: 2.8, quiz3: 2.2, a4: 0.1, a1: 0.4, a2: 0.2, a3: 0.8, quiz4: 1, final: 1.4, midterm: 37 }
         ];
 
         const marksDistribution = {
@@ -338,35 +377,21 @@
             const tableBody = document.getElementById('marksEntryTableBody');
             tableBody.innerHTML = '';
             
-            const numberOfStudents = getRandomInt(15, 25);
-            
-            for (let i = 0; i < numberOfStudents; i++) {
-                const regNo = String(2312400 + i + 1).padStart(7, '0');
-                const firstName = studentFirstNames[getRandomInt(0, studentFirstNames.length - 1)];
-                const lastName = studentLastNames[getRandomInt(0, studentLastNames.length - 1)];
-                const studentName = firstName + ' ' + lastName;
-                
-                // Generate random obtained marks
+            studentDataList.forEach((student, index) => {
+                const regNo = String(2312400 + index + 1).padStart(7, '0');
+                const studentName = student.name;
                 const maxMarks = marksInfo.totalMarks;
-                const obtainedMarks = (Math.random() * maxMarks).toFixed(1);
-                
-                // 15% chance to highlight row red
-                const shouldHighlight = getRandomInt(1, 100) <= 15;
                 
                 const row = document.createElement('tr');
-                if (shouldHighlight) {
-                    row.classList.add('highlight-student-row');
-                }
-                
                 row.innerHTML = `
                     <td>${regNo}</td>
                     <td>${studentName}</td>
                     <td>${maxMarks}</td>
-                    <td><input type="number" class="student-marks-input" min="0" max="${maxMarks}" step="0.5" value="${obtainedMarks}" placeholder="Enter marks"></td>
+                    <td><input type="number" class="student-marks-input" min="0" max="${maxMarks}" step="0.5" value="" placeholder="Enter marks"></td>
                 `;
                 
                 tableBody.appendChild(row);
-            }
+            });
         }
 
         function updateMarksType() {
@@ -417,72 +442,35 @@
             const tableBody = document.getElementById('recapFullTableBody');
             tableBody.innerHTML = '';
             
-            const numberOfStudents = getRandomInt(15, 25);
-            
-            for (let i = 0; i < numberOfStudents; i++) {
-                const regNo = String(2312400 + i + 1).padStart(7, '0');
-                const firstName = studentFirstNames[getRandomInt(0, studentFirstNames.length - 1)];
-                const lastName = studentLastNames[getRandomInt(0, studentLastNames.length - 1)];
-                const studentName = firstName + ' ' + lastName;
-                
-                // Generate random marks for each assessment
-                const quiz1 = (Math.random() * 4.5).toFixed(1);
-                const quiz2 = (Math.random() * 4.5).toFixed(1);
-                const quiz3 = (Math.random() * 4.5).toFixed(1);
-                const quiz4 = (Math.random() * 4.5).toFixed(1);
-                const assign1 = (Math.random() * 3).toFixed(1);
-                const assign2 = (Math.random() * 3).toFixed(1);
-                const assign3 = (Math.random() * 3).toFixed(1);
-                const assign4 = (Math.random() * 3).toFixed(1);
-                const finalPaper = (Math.random() * 40).toFixed(0);
-                const midTerm = (Math.random() * 30).toFixed(0);
-                
-                // Calculate totals
-                const quizTotal = (parseFloat(quiz1) + parseFloat(quiz2) + parseFloat(quiz3) + parseFloat(quiz4)).toFixed(1);
-                const assignTotal = (parseFloat(assign1) + parseFloat(assign2) + parseFloat(assign3) + parseFloat(assign4)).toFixed(1);
-                const totalMarks = (parseFloat(quizTotal) + parseFloat(assignTotal) + parseFloat(finalPaper) + parseFloat(midTerm)).toFixed(1);
-                const percentage = ((parseFloat(totalMarks) / 100) * 100).toFixed(1);
-                
-                // Grade calculation
-                let grade = 'F';
-                let gpa = '0.0';
-                if (percentage >= 80) { grade = 'A'; gpa = '4.0'; }
-                else if (percentage >= 70) { grade = 'B'; gpa = '3.0'; }
-                else if (percentage >= 60) { grade = 'C'; gpa = '2.0'; }
-                else if (percentage >= 50) { grade = 'D'; gpa = '1.0'; }
-                
-                // Highlight failed students (< 50%)
-                const shouldHighlight = percentage < 50;
+            studentDataList.forEach((student, index) => {
+                const regNo = String(2312400 + index + 1).padStart(7, '0');
+                const studentName = student.name;
                 
                 const row = document.createElement('tr');
-                if (shouldHighlight) {
-                    row.classList.add('recap-failed-row');
-                }
-                
                 row.innerHTML = `
                     <td class="edit-col"><button type="button" class="edit-link">Edit</button></td>
                     <td class="name-col">${studentName}</td>
                     <td class="regno-col">${regNo}</td>
-                    <td>${quiz1}</td>
-                    <td>${quiz2}</td>
-                    <td>${quiz3}</td>
-                    <td>${quiz4}</td>
-                    <td>${assign1}</td>
-                    <td>${assign2}</td>
-                    <td>${assign3}</td>
-                    <td>${assign4}</td>
-                    <td>${finalPaper}</td>
-                    <td>${midTerm}</td>
-                    <td>${quizTotal}</td>
-                    <td>${assignTotal}</td>
-                    <td>${totalMarks}</td>
-                    <td>${percentage}</td>
-                    <td>${grade}</td>
-                    <td>${gpa}</td>
+                    <td><input type="number" class="marks-input" min="0" max="4.5" step="0.5" placeholder="0"></td>
+                    <td><input type="number" class="marks-input" min="0" max="4.5" step="0.5" placeholder="0"></td>
+                    <td><input type="number" class="marks-input" min="0" max="4.5" step="0.5" placeholder="0"></td>
+                    <td><input type="number" class="marks-input" min="0" max="4.5" step="0.5" placeholder="0"></td>
+                    <td><input type="number" class="marks-input" min="0" max="3" step="0.5" placeholder="0"></td>
+                    <td><input type="number" class="marks-input" min="0" max="3" step="0.5" placeholder="0"></td>
+                    <td><input type="number" class="marks-input" min="0" max="3" step="0.5" placeholder="0"></td>
+                    <td><input type="number" class="marks-input" min="0" max="3" step="0.5" placeholder="0"></td>
+                    <td><input type="number" class="marks-input" min="0" max="40" step="0.5" placeholder="0"></td>
+                    <td><input type="number" class="marks-input" min="0" max="30" step="0.5" placeholder="0"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 `;
                 
                 tableBody.appendChild(row);
-            }
+            });
         }
     </script>
 </body>
