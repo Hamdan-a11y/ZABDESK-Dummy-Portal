@@ -40,6 +40,10 @@
                     <span class="menu-title">Recap Sheet (Enter Marks)</span>
                     <small>Record assessment scores</small>
                 </button>
+                <button type="button" class="hub-menu-btn" id="attendanceNavBtn">
+                    <span class="menu-title">Post Course Attendance</span>
+                    <small>Record attendance summary</small>
+                </button>
             </div>
 
             <div class="hub-guide-card">
@@ -264,6 +268,7 @@
         function setupOutlinePageNavigation() {
             const progressBtn = document.getElementById('progressNavBtn');
             const recapBtn = document.getElementById('recapNavBtn');
+            const attendanceBtn = document.getElementById('attendanceNavBtn');
             const courseId = getQueryParam('courseId') || 1;
 
             if (progressBtn) {
@@ -275,6 +280,12 @@
             if (recapBtn) {
                 recapBtn.addEventListener('click', () => {
                     window.location.href = `recap-sheet.html?courseId=${courseId}`;
+                });
+            }
+
+            if (attendanceBtn) {
+                attendanceBtn.addEventListener('click', () => {
+                    window.location.href = `post-course-attendance.html?courseId=${courseId}`;
                 });
             }
         }

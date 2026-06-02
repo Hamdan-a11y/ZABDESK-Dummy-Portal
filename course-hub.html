@@ -34,10 +34,16 @@
                 <button class="hub-menu-btn" id="progressNavBtn">
                     <span class="menu-title">Post Class Progress</span>
                     <small>Record lesson coverage</small>
-                </button>                <button type="button" class="hub-menu-btn" id="recapNavBtn">
+                </button>
+                <button type="button" class="hub-menu-btn" id="recapNavBtn">
                     <span class="menu-title">Recap Sheet (Enter Marks)</span>
                     <small>Record assessment scores</small>
-                </button>            </div>
+                </button>
+                <button type="button" class="hub-menu-btn" id="attendanceNavBtn">
+                    <span class="menu-title">Post Course Attendance</span>
+                    <small>Record attendance summary</small>
+                </button>
+            </div>
             <div class="hub-guide-card">
                 <h4>Reminder</h4>
                 <p>Submit course outlines for approval before the start of the semester. Updates propagate to all enrolled students automatically.</p>
@@ -125,6 +131,7 @@
             const outlineBtn = document.getElementById('outlineNavBtn');
             const progressBtn = document.getElementById('progressNavBtn');
             const recapBtn = document.getElementById('recapNavBtn');
+            const attendanceBtn = document.getElementById('attendanceNavBtn');
             const courseId = getQueryParam('courseId') || 1;
 
             if (outlineBtn) {
@@ -142,6 +149,12 @@
             if (recapBtn) {
                 recapBtn.addEventListener('click', () => {
                     window.location.href = `recap-sheet.html?courseId=${courseId}`;
+                });
+            }
+
+            if (attendanceBtn) {
+                attendanceBtn.addEventListener('click', () => {
+                    window.location.href = `post-course-attendance.html?courseId=${courseId}`;
                 });
             }
         }
