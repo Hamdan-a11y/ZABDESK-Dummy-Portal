@@ -54,8 +54,8 @@
 
         <section class="course-hub-content outline-center-panel">
             <div class="outline-wrapper">
-                <section class="outline-card">
-                    <header class="outline-title">Post Course Attendance</header>
+                <section class="outline-card attendance-card">
+                    <header class="outline-title">Lecture Attendance</header>
 
                     <div class="summary-table primary-summary">
                         <div class="summary-row">
@@ -69,9 +69,15 @@
                     </div>
 
                     <div class="summary-table secondary-summary">
-                        <div class="summary-row">
-                            <div class="summary-label">Class:</div>
-                            <div class="summary-value" id="attendanceClassName">BCS/BS-1 (D)</div>
+                        <div class="summary-row program-row">
+                            <div class="summary-label">Program:</div>
+                            <div class="summary-value">
+                                <div class="program-wrapper">
+                                    <span id="attendanceProgram">BCS/BS-1</span>
+                                    <span class="section-label">Section:</span>
+                                    <span class="section-value" id="attendanceSection">D</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="summary-row">
                             <div class="summary-label">Course:</div>
@@ -84,45 +90,11 @@
                     </div>
 
                     <section class="outline-section">
-                        <header>Attendance Summary</header>
-                        <div class="marks-entry-table-section">
-                            <table class="marks-entry-table">
-                                <thead>
-                                    <tr>
-                                        <th>Lecture No.</th>
-                                        <th>Date</th>
-                                        <th>Total Students</th>
-                                        <th>Present</th>
-                                        <th>Absent</th>
-                                        <th>Remarks</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>01</td>
-                                        <td>2024-09-18</td>
-                                        <td>42</td>
-                                        <td><input type="number" min="0" max="42" value="39"></td>
-                                        <td><input type="number" min="0" max="42" value="3"></td>
-                                        <td><input type="text" value="On time"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>02</td>
-                                        <td>2024-09-20</td>
-                                        <td>42</td>
-                                        <td><input type="number" min="0" max="42" value="40"></td>
-                                        <td><input type="number" min="0" max="42" value="2"></td>
-                                        <td><input type="text" value="Guest lecture"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>03</td>
-                                        <td>2024-09-23</td>
-                                        <td>42</td>
-                                        <td><input type="number" min="0" max="42" value="38"></td>
-                                        <td><input type="number" min="0" max="42" value="4"></td>
-                                        <td><input type="text" value="" placeholder="Optional"></td>
-                                    </tr>
-                                </tbody>
+                        <header>Attendance Sheet</header>
+                        <div class="attendance-table-wrapper">
+                            <table class="attendance-table">
+                                <thead id="attendanceTableHead"></thead>
+                                <tbody id="attendanceTableBody"></tbody>
                             </table>
                         </div>
                     </section>
@@ -176,6 +148,26 @@
             }
         }
 
+        const attendanceStudents = [
+            { regNo: '2312429', name: 'Muhammad Talha' },
+            { regNo: '2512104', name: 'Abdullah Bin Asaad' },
+            { regNo: '2512105', name: 'Ahmad Khan' },
+            { regNo: '2512106', name: 'Ahmed Imran' },
+            { regNo: '2512107', name: 'Amir Aslam Khan' },
+            { regNo: '2512109', name: 'Asad Karim' },
+            { regNo: '2512110', name: 'Asghar Raza' },
+            { regNo: '2512111', name: 'Asma Noureen' },
+            { regNo: '2512112', name: 'Ayesha Rehman' },
+            { regNo: '2512113', name: 'Dua Naeem' }
+        ];
+
+        const lectureSchedule = [
+            'Feb 16 2026', 'Feb 20 2026', 'Feb 23 2026', 'Feb 27 2026',
+            'Mar 02 2026', 'Mar 09 2026', 'Mar 06 2026', 'Mar 13 2026',
+            'Mar 16 2026', 'Mar 27 2026', 'Mar 30 2026', 'Apr 03 2026',
+            'Apr 06 2026', 'Apr 10 2026', 'Apr 13 2026', 'Apr 17 2026'
+        ];
+
         function populateAttendancePage() {
             const courseId = getQueryParam('courseId') || 1;
             const course = mockCourses.find(c => c.id == courseId);
@@ -188,9 +180,83 @@
             const instructorName = currentUser ? currentUser.name : course.instructor;
             document.getElementById('attendanceFacultyName').textContent = instructorName;
             document.getElementById('attendanceSemester').textContent = course.semester;
-            document.getElementById('attendanceClassName').textContent = course.className;
             document.getElementById('attendanceCourseTitle').textContent = `${course.code} ${course.title}`;
             document.getElementById('attendanceInstructor').textContent = instructorName;
+
+            const programSection = extractProgramAndSection(course.className);
+            document.getElementById('attendanceProgram').textContent = programSection.program;
+            document.getElementById('attendanceSection').textContent = programSection.section;
+
+            buildAttendanceTable();
+        }
+
+        function buildAttendanceTable() {
+            const tableHead = document.getElementById('attendanceTableHead');
+            const tableBody = document.getElementById('attendanceTableBody');
+
+            tableHead.innerHTML = '';
+            tableBody.innerHTML = '';
+
+            const headerRow = document.createElement('tr');
+            headerRow.innerHTML = `
+                <th class="attendance-edit">Edit</th>
+                <th class="attendance-serial">S.#</th>
+                <th class="attendance-regno">Reg.#</th>
+                <th class="attendance-name">Name</th>
+            `;
+
+            lectureSchedule.forEach((dateLabel, index) => {
+                const [month, day, year] = dateLabel.split(' ');
+                const lectureTh = document.createElement('th');
+                lectureTh.className = 'attendance-lecture';
+                lectureTh.innerHTML = `
+                    <div class="attendance-lect-title">Lect #${index + 1}</div>
+                    <div class="attendance-lect-date">${month} ${day}<br>${year}</div>
+                `;
+                headerRow.appendChild(lectureTh);
+            });
+
+            tableHead.appendChild(headerRow);
+
+            attendanceStudents.forEach((student, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="attendance-edit"><button type="button" class="edit-link">Edit</button></td>
+                    <td class="attendance-serial">${index + 1}</td>
+                    <td class="attendance-regno">${student.regNo}</td>
+                    <td class="attendance-name">${student.name}</td>
+                `;
+
+                lectureSchedule.forEach(() => {
+                    const status = Math.random() > 0.2 ? 'Present' : 'Absent';
+                    const cell = document.createElement('td');
+                    cell.className = `attendance-cell ${status.toLowerCase()}`;
+                    cell.innerHTML = `<button type="button" class="attendance-toggle ${status.toLowerCase()}">${status}</button>`;
+                    row.appendChild(cell);
+                });
+
+                tableBody.appendChild(row);
+            });
+
+            tableBody.addEventListener('click', (event) => {
+                const toggle = event.target.closest('.attendance-toggle');
+                if (!toggle) {
+                    return;
+                }
+
+                const isPresent = toggle.classList.contains('present');
+                const newStatus = isPresent ? 'Absent' : 'Present';
+
+                toggle.classList.toggle('present', !isPresent);
+                toggle.classList.toggle('absent', isPresent);
+                toggle.textContent = newStatus;
+
+                const cell = toggle.closest('.attendance-cell');
+                if (cell) {
+                    cell.classList.toggle('present', !isPresent);
+                    cell.classList.toggle('absent', isPresent);
+                }
+            });
         }
 
         function backToAttendanceMenu() {

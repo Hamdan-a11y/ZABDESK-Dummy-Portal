@@ -675,6 +675,106 @@
     color: #fff;
 }
 
+/* Attendance Sheet Styles */
+.attendance-card {
+    background-color: #e5f2fb;
+    border: 4px solid #7fa9c6;
+}
+
+.attendance-table-wrapper {
+    overflow-x: auto;
+    border: 2px solid #0b4f70;
+    background-color: #dbe9f5;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 1200px;
+}
+
+.attendance-table th,
+.attendance-table td {
+    border: 2px solid #0b4f70;
+    text-align: center;
+    padding: 8px 6px;
+    background-color: #dbe9f5;
+    color: #0c3550;
+}
+
+.attendance-table th {
+    background-color: #0b4f70;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.attendance-lecture {
+    min-width: 90px;
+}
+
+.attendance-lect-title {
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.attendance-lect-date {
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.attendance-edit,
+.attendance-serial,
+.attendance-regno {
+    background-color: #e5f2fb;
+    font-weight: 600;
+    min-width: 70px;
+}
+
+.attendance-name {
+    text-align: left;
+    padding-left: 10px;
+    min-width: 160px;
+    font-weight: 600;
+    background-color: #e5f2fb;
+}
+
+.attendance-cell.present {
+    background-color: #e5f2fb;
+}
+
+.attendance-cell.absent {
+    background-color: #ff6b6b;
+}
+
+.attendance-toggle {
+    width: 100%;
+    border: none;
+    padding: 6px 4px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    background: transparent;
+}
+
+.attendance-toggle.present {
+    color: #0c3550;
+}
+
+.attendance-toggle.absent {
+    color: #fff;
+}
+
+.attendance-table tbody tr:hover td {
+    background-color: #cfe2f1;
+}
+
+.attendance-table tbody tr:hover td.attendance-cell.absent {
+    background-color: #e24b4b;
+}
+
 /* View Recap Sheet Styles */
 .recap-view-header {
     display: grid;
