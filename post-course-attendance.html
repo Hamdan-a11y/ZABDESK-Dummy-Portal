@@ -91,6 +91,23 @@
 
                     <section class="outline-section">
                         <header>Attendance Sheet</header>
+                        <div class="attendance-controls">
+                            <div class="attendance-control-group">
+                                <label for="newLectureDate">Add Lecture Date</label>
+                                <div class="attendance-control-row">
+                                    <input type="date" id="newLectureDate" class="attendance-input">
+                                    <button type="button" class="attendance-btn" id="addLectureBtn">Add Lecture</button>
+                                </div>
+                            </div>
+                            <div class="attendance-control-group">
+                                <label for="newStudentReg">Add Student</label>
+                                <div class="attendance-control-row">
+                                    <input type="text" id="newStudentReg" class="attendance-input" placeholder="Reg.#">
+                                    <input type="text" id="newStudentName" class="attendance-input" placeholder="Student name">
+                                    <button type="button" class="attendance-btn" id="addStudentBtn">Add Student</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="attendance-table-wrapper">
                             <table class="attendance-table">
                                 <thead id="attendanceTableHead"></thead>
@@ -148,7 +165,7 @@
             }
         }
 
-        const attendanceStudents = [
+        let attendanceStudents = [
             { regNo: '2312429', name: 'Muhammad Talha' },
             { regNo: '2512104', name: 'Abdullah Bin Asaad' },
             { regNo: '2512105', name: 'Ahmad Khan' },
@@ -161,12 +178,14 @@
             { regNo: '2512113', name: 'Dua Naeem' }
         ];
 
-        const lectureSchedule = [
+        let lectureSchedule = [
             'Feb 16 2026', 'Feb 20 2026', 'Feb 23 2026', 'Feb 27 2026',
             'Mar 02 2026', 'Mar 09 2026', 'Mar 06 2026', 'Mar 13 2026',
             'Mar 16 2026', 'Mar 27 2026', 'Mar 30 2026', 'Apr 03 2026',
             'Apr 06 2026', 'Apr 10 2026', 'Apr 13 2026', 'Apr 17 2026'
         ];
+
+        let attendanceMatrix = [];
 
         function populateAttendancePage() {
             const courseId = getQueryParam('courseId') || 1;
@@ -187,7 +206,67 @@
             document.getElementById('attendanceProgram').textContent = programSection.program;
             document.getElementById('attendanceSection').textContent = programSection.section;
 
+            initAttendanceMatrix();
+            bindAttendanceControls();
             buildAttendanceTable();
+        }
+
+        function initAttendanceMatrix() {
+            attendanceMatrix = attendanceStudents.map(() =>
+                lectureSchedule.map(() => (Math.random() > 0.2 ? 'Present' : 'Absent'))
+            );
+        }
+
+        function bindAttendanceControls() {
+            const addLectureBtn = document.getElementById('addLectureBtn');
+            const addStudentBtn = document.getElementById('addStudentBtn');
+
+            if (addLectureBtn) {
+                addLectureBtn.addEventListener('click', () => {
+                    const dateInput = document.getElementById('newLectureDate');
+                    if (!dateInput || !dateInput.value) {
+                        alert('Please select a lecture date.');
+                        return;
+                    }
+                    const dateLabel = formatAttendanceDate(dateInput.value);
+                    lectureSchedule.push(dateLabel);
+                    attendanceMatrix.forEach(row => row.push(Math.random() > 0.2 ? 'Present' : 'Absent'));
+                    dateInput.value = '';
+                    buildAttendanceTable();
+                });
+            }
+
+            if (addStudentBtn) {
+                addStudentBtn.addEventListener('click', () => {
+                    const regInput = document.getElementById('newStudentReg');
+                    const nameInput = document.getElementById('newStudentName');
+                    const regNo = regInput ? regInput.value.trim() : '';
+                    const name = nameInput ? nameInput.value.trim() : '';
+
+                    if (!regNo || !name) {
+                        alert('Please enter both registration number and name.');
+                        return;
+                    }
+
+                    attendanceStudents.push({ regNo, name });
+                    attendanceMatrix.push(lectureSchedule.map(() => (Math.random() > 0.2 ? 'Present' : 'Absent')));
+
+                    regInput.value = '';
+                    nameInput.value = '';
+                    buildAttendanceTable();
+                });
+            }
+        }
+
+        function formatAttendanceDate(dateValue) {
+            const date = new Date(dateValue);
+            if (Number.isNaN(date.getTime())) {
+                return dateValue;
+            }
+            const month = date.toLocaleDateString('en-US', { month: 'short' });
+            const day = String(date.getDate()).padStart(2, '0');
+            const year = date.getFullYear();
+            return `${month} ${day} ${year}`;
         }
 
         function buildAttendanceTable() {
@@ -227,8 +306,8 @@
                     <td class="attendance-name">${student.name}</td>
                 `;
 
-                lectureSchedule.forEach(() => {
-                    const status = Math.random() > 0.2 ? 'Present' : 'Absent';
+                lectureSchedule.forEach((_, lectureIndex) => {
+                    const status = attendanceMatrix[index][lectureIndex] || 'Present';
                     const cell = document.createElement('td');
                     cell.className = `attendance-cell ${status.toLowerCase()}`;
                     cell.innerHTML = `<button type="button" class="attendance-toggle ${status.toLowerCase()}">${status}</button>`;
@@ -255,6 +334,18 @@
                 if (cell) {
                     cell.classList.toggle('present', !isPresent);
                     cell.classList.toggle('absent', isPresent);
+                }
+
+                const row = toggle.closest('tr');
+                if (!row) {
+                    return;
+                }
+                const rowIndex = Array.from(tableBody.rows).indexOf(row);
+                const cellIndex = Array.from(row.cells).indexOf(cell);
+                const lectureIndex = cellIndex - 4;
+
+                if (rowIndex >= 0 && lectureIndex >= 0) {
+                    attendanceMatrix[rowIndex][lectureIndex] = newStatus;
                 }
             });
         }
