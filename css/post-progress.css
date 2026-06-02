@@ -787,6 +787,10 @@
     background-color: #e5f2fb;
 }
 
+.attendance-cell {
+    position: relative;
+}
+
 .attendance-cell.present {
     background-color: #e5f2fb;
 }
@@ -803,34 +807,120 @@
     background-color: #b5d5ff;
 }
 
-.attendance-toggle {
+.attendance-picker {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+}
+
+.attendance-picker.open {
+    z-index: 20;
+}
+
+.attendance-display {
     width: 100%;
     border: none;
-    padding: 6px 4px;
+    padding: 6px 18px 6px 6px;
     font-size: 12px;
     font-weight: 700;
     cursor: pointer;
     background: transparent;
+    text-transform: capitalize;
+    position: relative;
 }
 
-.attendance-toggle.present {
+.attendance-display.present {
     color: #0c3550;
 }
 
-.attendance-toggle.absent {
+.attendance-display.absent {
     color: #fff;
 }
 
-.attendance-toggle.exempt {
+.attendance-display.exempt {
     color: #6b4a00;
 }
 
-.attendance-toggle.leave {
+.attendance-display.leave {
     color: #073763;
 }
 
-.attendance-toggle {
+.attendance-caret {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid currentColor;
+}
+
+.attendance-options {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    top: calc(100% + 4px);
+    background-color: #f8fbff;
+    border: 2px solid #0b4f70;
+    border-radius: 6px;
+    box-shadow: 0 8px 16px rgba(11, 79, 112, 0.25);
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+    z-index: 5;
+}
+
+.attendance-picker.open .attendance-options {
+    max-height: 160px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.attendance-option {
+    width: 100%;
+    border: none;
+    padding: 6px 8px;
+    font-size: 12px;
+    font-weight: 700;
     text-transform: capitalize;
+    cursor: pointer;
+    border-bottom: 1px solid #d1e1ef;
+}
+
+.attendance-option:last-child {
+    border-bottom: none;
+}
+
+.attendance-option.present {
+    background-color: #eef6ff;
+    color: #0c3550;
+}
+
+.attendance-option.absent {
+    background-color: #ff6b6b;
+    color: #fff;
+}
+
+.attendance-option.exempt {
+    background-color: #ffe08a;
+    color: #6b4a00;
+}
+
+.attendance-option.leave {
+    background-color: #b5d5ff;
+    color: #073763;
+}
+
+.attendance-option:hover {
+    filter: brightness(0.95);
 }
 
 .attendance-table tbody tr:hover td {

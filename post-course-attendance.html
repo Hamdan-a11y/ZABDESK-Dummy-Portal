@@ -186,7 +186,8 @@
         ];
 
         let attendanceMatrix = [];
-        const attendanceStatusOrder = ['', 'Present', 'Absent', 'Exempt', 'Leave'];
+        const attendanceStatusOptions = ['Present', 'Absent', 'Exempt', 'Leave'];
+        let attendancePickerBound = false;
 
         function populateAttendancePage() {
             const courseId = getQueryParam('courseId') || 1;
@@ -209,6 +210,7 @@
 
             initAttendanceMatrix();
             bindAttendanceControls();
+            bindAttendancePicker();
             buildAttendanceTable();
         }
 
@@ -259,6 +261,71 @@
             }
         }
 
+        function bindAttendancePicker() {
+            if (attendancePickerBound) {
+                return;
+            }
+
+            attendancePickerBound = true;
+
+            document.addEventListener('click', (event) => {
+                const picker = event.target.closest('.attendance-picker');
+                if (!picker) {
+                    closeAllAttendancePickers();
+                    return;
+                }
+
+                const option = event.target.closest('.attendance-option');
+                if (option) {
+                    applyAttendanceStatus(picker, option.dataset.value || '');
+                    closeAllAttendancePickers();
+                    return;
+                }
+
+                const display = event.target.closest('.attendance-display');
+                if (display) {
+                    const wasOpen = picker.classList.contains('open');
+                    closeAllAttendancePickers();
+                    if (!wasOpen) {
+                        picker.classList.add('open');
+                        display.setAttribute('aria-expanded', 'true');
+                    }
+                }
+            });
+        }
+
+        function closeAllAttendancePickers() {
+            document.querySelectorAll('.attendance-picker.open').forEach((picker) => {
+                picker.classList.remove('open');
+                const display = picker.querySelector('.attendance-display');
+                if (display) {
+                    display.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        function applyAttendanceStatus(picker, newStatus) {
+            const display = picker.querySelector('.attendance-display');
+            const cell = picker.closest('.attendance-cell');
+            const statusClass = newStatus ? newStatus.toLowerCase() : '';
+
+            if (display) {
+                display.className = `attendance-display ${statusClass}`.trim();
+                display.innerHTML = `${newStatus || 'Select'}<span class="attendance-caret"></span>`;
+            }
+
+            if (cell) {
+                cell.className = `attendance-cell ${statusClass}`.trim();
+            }
+
+            const rowIndex = Number(picker.dataset.rowIndex);
+            const lectureIndex = Number(picker.dataset.lectureIndex);
+
+            if (!Number.isNaN(rowIndex) && !Number.isNaN(lectureIndex)) {
+                attendanceMatrix[rowIndex][lectureIndex] = newStatus;
+            }
+        }
+
         function formatAttendanceDate(dateValue) {
             const date = new Date(dateValue);
             if (Number.isNaN(date.getTime())) {
@@ -298,6 +365,10 @@
 
             tableHead.appendChild(headerRow);
 
+            const optionsMarkup = attendanceStatusOptions.map((option) => `
+                <button type="button" class="attendance-option ${option.toLowerCase()}" data-value="${option}">${option}</button>
+            `).join('');
+
             attendanceStudents.forEach((student, index) => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -309,46 +380,24 @@
 
                 lectureSchedule.forEach((_, lectureIndex) => {
                     const status = attendanceMatrix[index][lectureIndex] || '';
+                    const statusClass = status ? status.toLowerCase() : '';
+                    const statusLabel = status || 'Select';
                     const cell = document.createElement('td');
-                    cell.className = `attendance-cell ${status.toLowerCase()}`;
-                    cell.innerHTML = `<button type="button" class="attendance-toggle ${status.toLowerCase()}" data-status="${status}">${status}</button>`;
+                    cell.className = `attendance-cell ${statusClass}`.trim();
+                    cell.innerHTML = `
+                        <div class="attendance-picker" data-row-index="${index}" data-lecture-index="${lectureIndex}">
+                            <button type="button" class="attendance-display ${statusClass}" aria-haspopup="listbox" aria-expanded="false">
+                                ${statusLabel}<span class="attendance-caret"></span>
+                            </button>
+                            <div class="attendance-options" role="listbox">
+                                ${optionsMarkup}
+                            </div>
+                        </div>
+                    `;
                     row.appendChild(cell);
                 });
 
                 tableBody.appendChild(row);
-            });
-
-            tableBody.addEventListener('click', (event) => {
-                const toggle = event.target.closest('.attendance-toggle');
-                if (!toggle) {
-                    return;
-                }
-
-                const currentStatus = toggle.dataset.status || '';
-                const currentIndex = attendanceStatusOrder.indexOf(currentStatus);
-                const nextIndex = currentIndex === -1 ? 1 : (currentIndex + 1) % attendanceStatusOrder.length;
-                const newStatus = attendanceStatusOrder[nextIndex];
-
-                toggle.dataset.status = newStatus;
-                toggle.textContent = newStatus;
-                toggle.className = `attendance-toggle ${newStatus.toLowerCase()}`.trim();
-
-                const cell = toggle.closest('.attendance-cell');
-                if (cell) {
-                    cell.className = `attendance-cell ${newStatus.toLowerCase()}`.trim();
-                }
-
-                const row = toggle.closest('tr');
-                if (!row) {
-                    return;
-                }
-                const rowIndex = Array.from(tableBody.rows).indexOf(row);
-                const cellIndex = Array.from(row.cells).indexOf(cell);
-                const lectureIndex = cellIndex - 4;
-
-                if (rowIndex >= 0 && lectureIndex >= 0) {
-                    attendanceMatrix[rowIndex][lectureIndex] = newStatus;
-                }
             });
         }
 
