@@ -795,6 +795,14 @@
     background-color: #ff6b6b;
 }
 
+.attendance-cell.exempt {
+    background-color: #ffe08a;
+}
+
+.attendance-cell.leave {
+    background-color: #b5d5ff;
+}
+
 .attendance-toggle {
     width: 100%;
     border: none;
@@ -811,6 +819,18 @@
 
 .attendance-toggle.absent {
     color: #fff;
+}
+
+.attendance-toggle.exempt {
+    color: #6b4a00;
+}
+
+.attendance-toggle.leave {
+    color: #073763;
+}
+
+.attendance-toggle {
+    text-transform: capitalize;
 }
 
 .attendance-table tbody tr:hover td {

@@ -186,6 +186,7 @@
         ];
 
         let attendanceMatrix = [];
+        const attendanceStatusOrder = ['', 'Present', 'Absent', 'Exempt', 'Leave'];
 
         function populateAttendancePage() {
             const courseId = getQueryParam('courseId') || 1;
@@ -230,7 +231,7 @@
                     }
                     const dateLabel = formatAttendanceDate(dateInput.value);
                     lectureSchedule.push(dateLabel);
-                    attendanceMatrix.forEach(row => row.push(Math.random() > 0.2 ? 'Present' : 'Absent'));
+                    attendanceMatrix.forEach(row => row.push(''));
                     dateInput.value = '';
                     buildAttendanceTable();
                 });
@@ -249,7 +250,7 @@
                     }
 
                     attendanceStudents.push({ regNo, name });
-                    attendanceMatrix.push(lectureSchedule.map(() => (Math.random() > 0.2 ? 'Present' : 'Absent')));
+                    attendanceMatrix.push(lectureSchedule.map(() => ''));
 
                     regInput.value = '';
                     nameInput.value = '';
@@ -307,10 +308,10 @@
                 `;
 
                 lectureSchedule.forEach((_, lectureIndex) => {
-                    const status = attendanceMatrix[index][lectureIndex] || 'Present';
+                    const status = attendanceMatrix[index][lectureIndex] || '';
                     const cell = document.createElement('td');
                     cell.className = `attendance-cell ${status.toLowerCase()}`;
-                    cell.innerHTML = `<button type="button" class="attendance-toggle ${status.toLowerCase()}">${status}</button>`;
+                    cell.innerHTML = `<button type="button" class="attendance-toggle ${status.toLowerCase()}" data-status="${status}">${status}</button>`;
                     row.appendChild(cell);
                 });
 
@@ -323,17 +324,18 @@
                     return;
                 }
 
-                const isPresent = toggle.classList.contains('present');
-                const newStatus = isPresent ? 'Absent' : 'Present';
+                const currentStatus = toggle.dataset.status || '';
+                const currentIndex = attendanceStatusOrder.indexOf(currentStatus);
+                const nextIndex = currentIndex === -1 ? 1 : (currentIndex + 1) % attendanceStatusOrder.length;
+                const newStatus = attendanceStatusOrder[nextIndex];
 
-                toggle.classList.toggle('present', !isPresent);
-                toggle.classList.toggle('absent', isPresent);
+                toggle.dataset.status = newStatus;
                 toggle.textContent = newStatus;
+                toggle.className = `attendance-toggle ${newStatus.toLowerCase()}`.trim();
 
                 const cell = toggle.closest('.attendance-cell');
                 if (cell) {
-                    cell.classList.toggle('present', !isPresent);
-                    cell.classList.toggle('absent', isPresent);
+                    cell.className = `attendance-cell ${newStatus.toLowerCase()}`.trim();
                 }
 
                 const row = toggle.closest('tr');
